@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>✨Welcome to🐺🐉ℍʘwliɳℊ ℰβʘɳℽ🐺✨ — Wolvden Cave BR</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="bg-mesh" aria-hidden="true"></div>
+
+<!-- Theme Toggle -->
+<div class="theme-toggle">
+  <span class="toggle-icon" id="toggleIcon">🌙</span>
+  <span class="toggle-label" id="toggleLabel">Dark Mode</span>
+  <label class="toggle-track" aria-label="Toggle theme">
+    <input type="checkbox" id="themeToggle" onchange="toggleTheme()">
+    <span class="toggle-knob"></span>
+  </label>
+</div>
+
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <span class="header-rune-tl" aria-hidden="true">⬡</span>
+
+    <h1 class="site-title">✨Welcome to🐺🐉ℍʘwliɳℊ ℰβʘɳℽ🐺✨</h1>
+
+    <div class="header-meta">
+      <span class="meta-badge">
+        Facebook Group PT-BR &nbsp;·&nbsp;
+        <a href="https://www.facebook.com/groups/720516458811518/" target="_blank" rel="noopener">
+          Wolvden Cave BR
+        </a>
+      </span>
+      <span class="timezone">🌎 UTC‑3 &nbsp;·&nbsp; Brazil</span>
+    </div>
+  </header>
+
+  <hr class="divider">
+
+  <!-- CARD 1: Wanting to Achieve -->
+  <section class="card" aria-labelledby="wantTitle">
+    <h2 class="card-title" id="wantTitle">
+      <span class="ct-icon">🏆</span> Wanting to Achieve
+    </h2>
+
+    <div class="goal-banner">
+      <span class="gb-label">Goal</span>
+      Tier III ou <span class="hl">Special Wolf 4×Mut Carrier</span> — Hetero / Fox / Glass
+    </div>
+
+    <div class="buy-banner">
+      <span class="buy-icon">💰</span>
+      <div>
+        <strong style="color:var(--gold2);">Comprando:</strong> 
+        Special / Tier III Base, Carrier ou Hetero Eyes.<br>
+        Aceito <span class="hl">NBW Tier 2</span> e negoceio <span class="hl">Mut 2×+Carrier!</span>
+      </div>
+    </div>
+
+    <div class="list-row">
+      <span class="row-label">❤️ Love Wolves</span>
+      <div class="chips">
+        <span class="chip hl">Dark T3 💠</span>
+        <span class="chip hl">Especial 🎁</span>
+        <span class="chip hl">Albinism 🤍</span>
+        <span class="chip hl">Melanism 🖤</span>
+        <span class="chip hl">Piebald Torn 🌓</span>
+        <span class="chip hl">Piebald Uneven 🌒</span>
+        <span class="chip">Albinism Carrier 🏳️</span>
+        <span class="chip">Melanism Carrier 🏴</span>
+      </div>
+    </div>
+
+    <div class="list-row">
+      <span class="row-label">🎨 Markings Preferidos</span>
+      <div class="chips">
+        <span class="chip tier">Inuit T7</span>
+        <span class="chip tier">Tamaskan T7</span>
+        <span class="chip tier">Shaded T8</span>
+        <span class="chip tier">Smoke T8</span>
+        <span class="chip tier">Points T8</span>
+      </div>
+    </div>
+
+    <div class="have-note">
+      <span class="have-dot">●</span>
+      <span><strong style="color:var(--success);">Have:</strong> Amigos para conversa e negociação (respondo com certeza!)</span>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- CARD 2: Bloodline & Traits -->
+  <section class="card" aria-labelledby="bloodTitle">
+    <h2 class="card-title" id="bloodTitle">
+      <span class="ct-icon">🧬</span> Bloodline &amp; Traits Desejados
+    </h2>
+
+    <div class="list-row">
+      <span class="row-label">🛡️ Tier / Line</span>
+      <div class="chips">
+        <span class="chip tier">T2 🛡️</span>
+        <span class="chip tier">T3 💠</span>
+        <span class="chip tier">Especial 🎁</span>
+        <span class="chip hl">New Line Hetero</span>
+      </div>
+    </div>
+
+    <div class="list-row">
+      <span class="row-label">👁️ Eyes</span>
+      <div class="chips">
+        <span class="chip hl">Hetero 🔰</span>
+        <span class="chip hl">Glass 🔮</span>
+        <span class="chip hl">Fox 🦊</span>
+      </div>
+    </div>
+
+    <div class="list-row">
+      <span class="row-label">🧬 Mutations</span>
+      <div class="chips">
+        <span class="chip hl">Albinism 🤍</span>
+        <span class="chip hl">Melanism 🖤</span>
+        <span class="chip hl">Piebald Torn 🌓</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- STUD SECTION -->
+  <section class="stud-section" aria-labelledby="studTitle">
+    <div class="stud-card">
+      <p class="stud-eyebrow">Available for Breeding</p>
+
+      <a href="https://www.wolvden.com/wolf/6318075" class="stud-link" target="_blank" rel="noopener" id="studTitle">
+        <span>For Stud — Mihas 🌓 G2 Piebald</span>
+      </a>
+
+      <div class="stud-stats">
+        <span class="stat-pill">Generation 2</span>
+        <span class="stat-pill">Piebald Torn 🌓</span>
+        <span class="stat-pill">Mutation Carrier</span>
+      </div>
+
+      <div class="wolf-img-wrap">
+        <a href="https://www.wolvden.com/wolf/6318075" target="_blank" rel="noopener">
+          <img src="https://wolf.wolvden.com/f/e2/79/9d/e2799d4820b5392dc43831999c4fa4f184ace4bb.6318075.1778131445.png" 
+               alt="Mihas G2 Piebald" class="wolf-img" loading="lazy">
+        </a>
+      </div>
+    </div>
+
+    <div class="wolf-img-wrap">
+      <img src="https://i.pinimg.com/736x/5d/87/06/5d8706ac80fe6f511bcf2f8c4d0e37e9.jpg" 
+           alt="Mihas Portrait" class="wolf-img" loading="lazy">
+      <p class="img-credit">✨ Imagens geradas por Thayná B.S. · Maio 2026 · Gemini</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-runes" aria-hidden="true">⬡ ◈ ⬡ ◈ ⬡ ◈ ⬡</div>
+    <nav class="footer-links">
+      <a href="https://www.wolvden.com/chatter/topic/143474?page=1" target="_blank" rel="noopener">Raise &amp; Chase Howling</a>
+      <span class="footer-sep">◈</span>
+      <a href="https://www.wolvden.com/g/society/217/topic/149539" target="_blank" rel="noopener">Howling Ebony Chaseds</a>
+    </nav>
+    <p class="footer-credit">
+      🇧🇷 Wolvden Cave BR • Tema roxo &amp; preto feito com paixão
+    </p>
+  </footer>
+
+</div>
+
+<script>
+  const toggle = document.getElementById('themeToggle');
+  const icon = document.getElementById('toggleIcon');
+  const label = document.getElementById('toggleLabel');
+  const html = document.documentElement;
+
+  function applyTheme(theme) {
+    html.setAttribute('data-theme', theme);
+    const isDark = theme === 'dark';
+    toggle.checked = isDark;
+    icon.textContent = isDark ? '🌙' : '☀️';
+    label.textContent = isDark ? 'Dark Mode' : 'Light Mode';
+  }
+
+  function toggleTheme() {
+    const next = toggle.checked ? 'dark' : 'light';
+    localStorage.setItem('theme', next);
+    applyTheme(next);
+  }
+
+  applyTheme(localStorage.getItem('theme') || 'dark');
+</script>
+</body>
+</html>
