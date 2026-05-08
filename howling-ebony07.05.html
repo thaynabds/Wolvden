@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>✨ Howling Ebony 🐺 — Wolvden Cave BR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Rajdhani:wght@400;500;600;700&family=Exo+2:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg0: #06050d;
+    --bg1: #0d0b1a;
+    --bg2: #130f23;
+    --bg3: #1a142e;
+    --card: #11101e;
+    --card2: #18163080;
+    --border: #2e2555;
+    --border2: #4a3a8a;
+    --accent: #7c3aed;
+    --accent2: #9d5cff;
+    --accent3: #b97aff;
+    --glow: rgba(124,58,237,0.35);
+    --glow2: rgba(124,58,237,0.15);
+    --gold: #c9a227;
+    --gold2: #f0c94a;
+    --text1: #ede8ff;
+    --text2: #a898cc;
+    --text3: #6b5f8a;
+    --success: #2dd4a0;
+    --r: 14px;
+    --r2: 20px;
+  }
+
+  [data-theme="light"] {
+    --bg0: #f0edff;
+    --bg1: #ffffff;
+    --bg2: #f5f2ff;
+    --bg3: #ebe6ff;
+    --card: #ffffff;
+    --card2: #f9f7ffcc;
+    --border: #d4c8ff;
+    --border2: #9b7ee0;
+    --accent: #6d28d9;
+    --accent2: #7c3aed;
+    --accent3: #9d5cff;
+    --glow: rgba(109,40,217,0.2);
+    --glow2: rgba(109,40,217,0.08);
+    --gold: #b57f00;
+    --gold2: #d4960a;
+    --text1: #1a1030;
+    --text2: #4a3a7a;
+    --text3: #8070a8;
+    --success: #047857;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Exo 2', 'Segoe UI', sans-serif;
+    background: var(--bg0);
+    color: var(--text1);
+    line-height: 1.65;
+    min-height: 100vh;
+    transition: background 0.4s, color 0.4s;
+    overflow-x: hidden;
+  }
+
+  /* ── background texture ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 10% 10%, rgba(90,30,200,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 90% 80%, rgba(60,20,150,0.1) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 24px 20px 60px; }
+
+  /* ── THEME TOGGLE ── */
+  .toggle-wrap {
+    position: fixed;
+    top: 18px; right: 18px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--card);
+    border: 1px solid var(--border2);
+    border-radius: 50px;
+    padding: 9px 18px;
+    box-shadow: 0 4px 24px var(--glow);
+    transition: all 0.3s;
+  }
+  .toggle-wrap:hover { box-shadow: 0 8px 32px var(--glow); }
+  .toggle-label { font-family: 'Rajdhani', sans-serif; font-weight: 600; font-size: 0.88rem; letter-spacing: 0.5px; white-space: nowrap; }
+  .toggle-icon { font-size: 1.1rem; }
+
+  .switch { position: relative; width: 46px; height: 24px; }
+  .switch input { opacity: 0; width: 0; height: 0; }
+  .knob {
+    position: absolute; inset: 0;
+    background: var(--bg3);
+    border-radius: 50px;
+    border: 1px solid var(--border2);
+    cursor: pointer;
+    transition: all 0.35s;
+  }
+  .knob::after {
+    content: '';
+    position: absolute;
+    top: 3px; left: 3px;
+    width: 18px; height: 18px;
+    background: var(--accent2);
+    border-radius: 50%;
+    transition: all 0.35s;
+    box-shadow: 0 0 8px var(--glow);
+  }
+  .switch input:checked + .knob::after { transform: translateX(22px); background: var(--gold2); box-shadow: 0 0 8px rgba(201,162,39,0.5); }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--r2);
+    padding: 48px 32px 40px;
+    text-align: center;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(150,100,255,0.1);
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: 50%;
+    transform: translateX(-50%);
+    width: 500px; height: 200px;
+    background: radial-gradient(ellipse, var(--glow) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* ── TITLE — always one line via clamp + nowrap ── */
+  .site-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-weight: 900;
+    white-space: nowrap;
+    /* fluid: 1.1rem at 320px, scales up to ~3rem at 900px */
+    font-size: clamp(0.85rem, 3.8vw, 2.8rem);
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+    display: block;
+    margin-bottom: 28px;
+    color: var(--text1);
+    text-shadow: 0 0 40px var(--glow);
+  }
+
+  .site-title .v1 { color: var(--gold2); }
+  .site-title .v2 { color: var(--accent3); }
+  .site-title .v3 { color: #888; }
+
+  /* decorative underline */
+  .title-rule {
+    width: 200px; height: 2px; margin: 0 auto 28px;
+    background: linear-gradient(90deg, transparent, var(--accent2), var(--gold), var(--accent2), transparent);
+    border-radius: 2px;
+  }
+
+  .subtitle {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: clamp(0.9rem, 2.2vw, 1.15rem);
+    color: var(--text2);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .fb-link {
+    color: var(--accent3);
+    font-weight: 700;
+    text-decoration: none;
+    padding: 4px 12px;
+    border: 1px solid var(--border2);
+    border-radius: 30px;
+    transition: all 0.3s;
+    white-space: nowrap;
+  }
+  .fb-link:hover { background: var(--accent); color: #fff; border-color: var(--accent); box-shadow: 0 0 16px var(--glow); }
+
+  .tz { color: var(--accent3); font-style: italic; font-size: 0.9em; }
+
+  /* ── DIVIDER ── */
+  .divider {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border2), var(--accent2), var(--border2), transparent);
+    margin: 36px 0;
+    opacity: 0.7;
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--r2);
+    padding: 28px 28px 24px;
+    margin-bottom: 28px;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.4);
+    transition: border-color 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent3), var(--gold));
+    border-radius: var(--r2) var(--r2) 0 0;
+  }
+  .card:hover { border-color: var(--border2); box-shadow: 0 8px 50px rgba(0,0,0,0.5), 0 0 0 1px var(--border2); }
+
+  .card-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold2);
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-title .icon { font-size: 1.3rem; }
+
+  /* ── LIST ITEMS ── */
+  .item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(46,37,85,0.4);
+    font-size: 1rem;
+    color: var(--text2);
+    transition: color 0.2s;
+  }
+  .item:last-child { border-bottom: none; }
+  .item:hover { color: var(--text1); }
+
+  .bullet {
+    flex-shrink: 0;
+    width: 22px; height: 22px;
+    background: var(--bg3);
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.65rem;
+    color: var(--accent3);
+    margin-top: 2px;
+    box-shadow: 0 0 8px var(--glow2);
+  }
+
+  .hl {
+    font-weight: 700;
+    background: linear-gradient(90deg, var(--accent3), var(--gold2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .have-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(45,212,160,0.12);
+    border: 1px solid rgba(45,212,160,0.3);
+    color: var(--success);
+    padding: 3px 12px;
+    border-radius: 30px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    margin-right: 6px;
+  }
+
+  /* ── STUD SECTION ── */
+  .stud-wrap {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--r2);
+    overflow: hidden;
+    margin-bottom: 28px;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.4);
+    position: relative;
+  }
+  .stud-wrap::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--accent3), var(--gold));
+    border-radius: var(--r2) var(--r2) 0 0;
+  }
+
+  .stud-header {
+    padding: 24px 28px 20px;
+    text-align: center;
+  }
+
+  .stud-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(0.9rem, 2.5vw, 1.35rem);
+    font-weight: 700;
+    color: var(--text1);
+    text-decoration: none;
+    padding: 16px 32px;
+    background: linear-gradient(135deg, var(--bg3), var(--bg2));
+    border: 1px solid var(--border2);
+    border-radius: 12px;
+    transition: all 0.35s;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+    white-space: nowrap;
+  }
+  .stud-cta:hover {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border-color: var(--accent3);
+    color: #fff;
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px var(--glow);
+  }
+
+  .stud-sprite {
+    display: block;
+    margin: 0 auto;
+    max-width: 220px;
+    width: 100%;
+    transition: transform 0.4s;
+  }
+  .stud-sprite:hover { transform: scale(1.06); }
+
+  .stud-image-wrap { text-align: center; padding: 0 24px 24px; }
+
+  .stud-main-img {
+    max-width: 100%;
+    max-height: 480px;
+    width: auto;
+    height: auto;
+    border-radius: 14px;
+    border: 1px solid var(--border2);
+    box-shadow: 0 12px 50px rgba(0,0,0,0.5);
+    transition: all 0.4s;
+    display: inline-block;
+  }
+  .stud-main-img:hover { transform: scale(1.02); box-shadow: 0 20px 60px var(--glow); border-color: var(--accent3); }
+
+  /* ── FOOTER LINKS ── */
+  .footer-links {
+    text-align: center;
+    margin: 16px 0 8px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 20px;
+  }
+  .footer-links a {
+    color: var(--accent3);
+    text-decoration: none;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    padding: 4px 14px;
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    transition: all 0.3s;
+  }
+  .footer-links a:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .footer-sep { color: var(--border2); }
+
+  .credit {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text3);
+    font-style: italic;
+    margin-top: 20px;
+    line-height: 1.8;
+  }
+
+  /* ── RESPONSIVE ADJUSTMENTS ── */
+  @media (max-width: 600px) {
+    .toggle-wrap { top: 12px; right: 12px; padding: 8px 14px; gap: 8px; }
+    .toggle-label { display: none; }
+    .header { padding: 48px 18px 32px; margin-bottom: 20px; }
+    .card, .stud-wrap { border-radius: 14px; }
+    .card { padding: 22px 18px 18px; }
+    .stud-header { padding: 20px 18px 16px; }
+    .stud-image-wrap { padding: 0 14px 18px; }
+    .stud-cta { padding: 13px 20px; }
+  }
+
+  @media (max-width: 380px) {
+    .site-title { font-size: clamp(0.7rem, 4.5vw, 1.2rem); }
+  }
+</style>
+</head>
+<body>
+
+<!-- Theme Toggle -->
+<label class="toggle-wrap" title="Alternar tema">
+  <span class="toggle-icon" id="ti">☀️</span>
+  <span class="toggle-label" id="tl">Light Mode</span>
+  <label class="switch">
+    <input type="checkbox" id="tt">
+    <span class="knob"></span>
+  </label>
+</label>
+
+<div class="page">
+
+  <!-- ── HEADER ── -->
+  <header class="header">
+    <span class="site-title">
+      <span class="v1">✨</span>Welcome to
+      <span class="v1">🐺🐉</span><span class="v2">ℍʘwliɳℊ ℰβʘɳℽ</span><span class="v1">🐺✨</span>
+    </span>
+    <div class="title-rule"></div>
+    <div class="subtitle">
+      <span style="font-style:italic; color:var(--accent3);">Facebook Group PT BR</span>
+      <a href="https://www.facebook.com/groups/720516458811518/" class="fb-link" target="_blank" rel="noopener">Wolvden Cave BR</a>
+      <span class="tz">· UTC-3 · Brazil</span>
+    </div>
+  </header>
+
+  <hr class="divider">
+
+  <!-- ── WANTS 1 ── -->
+  <section class="card">
+    <div class="card-title"><span class="icon">💎</span> Objective — Buying</div>
+
+    <div style="background:var(--bg3); border:1px solid var(--border2); border-radius:10px; padding:14px 18px; margin-bottom:20px; font-family:'Rajdhani',sans-serif; font-size:1rem; color:var(--gold2); font-weight:600; letter-spacing:0.3px;">
+      🎯 Wanting to achieve: <span style="color:var(--text1);">Tier III or ✨ Special Wolf — 4× Mutation Carrier · Hetero / Fox / Glass</span>
+    </div>
+
+    <div style="font-family:'Rajdhani',sans-serif; font-weight:600; font-size:0.95rem; color:var(--accent3); letter-spacing:0.5px; margin-bottom:14px; text-transform:uppercase;">
+      💰 I Want to Buy — Special / Tier III Base, Carrier or Hetero Eyes. Accept NBW T2 &amp; negotiate Mut 2×+Carrier!
+    </div>
+
+    <div class="item">
+      <span class="bullet">◆</span>
+      <span>Love Wolves: <span class="hl">Dark</span> T3💠 / Special*🎁 + <span class="hl">Albinism</span>🤍, <span class="hl">Melanism</span>🖤, Albinism Carrier🏳️, Melanism Carrier🏴, Brachycephaly Carrier🚩, <span class="hl">Piebald Torn🌓, Piebald Uneven🌒</span>, Deafness🕶️, Hereditary Cataracts👓</span>
+    </div>
+
+    <div class="item">
+      <span class="bullet">◆</span>
+      <span><span class="hl">Markings</span>: <span class="hl">Inuit</span> T7, <span class="hl">Tamaskan</span> T7, <span class="hl">Shaded</span> T8, <span class="hl">Smoke</span> T8, <span class="hl">Points</span> T8 · White Marbled Unders, Predator, Heavy Husky, Carnage, Full Rump, White Urajiro, Event Claws, Skin, Nose, Base &amp; Marking</span>
+    </div>
+
+    <div class="item">
+      <span class="bullet">◆</span>
+      <span><span class="have-badge">✦ Have</span> Friends — not for sale, but feel free to message me and <em style="color:var(--accent3);">I will definitely answer you!</em></span>
+    </div>
+  </section>
+
+  <!-- ── WANTS 2 ── -->
+  <section class="card">
+    <div class="card-title"><span class="icon">🔍</span> Looking For</div>
+
+    <div class="item"><span class="bullet">◆</span><span>T2🛡️ · T3💠 · Special🎁 — NL New Bloodline · ❌ Not my bloodline of BM/T3/Carrier</span></div>
+    <div class="item"><span class="bullet">◆</span><span><span class="hl">Hetero🔰</span> · <span class="hl">Glass🔮</span> · <span class="hl">Fox🦊</span> · Violet🍇 · Indigo🍆 · Purple · Azure</span></div>
+    <div class="item"><span class="bullet">◆</span><span><span class="hl">NIB🧼</span> · <span class="hl">NBF💦</span> · <span class="hl">IB (In Breed)🟤</span> · Purple Star Chased🌠</span></div>
+    <div class="item"><span class="bullet">◆</span><span><span class="hl">Albinism🤍</span> · <span class="hl">Melanism🖤</span> · <span class="hl">Mutação🧬</span> · Brachycephaly🚩 · AlbCarrier🏳️ · MelCarrier🏴 · Piebald Torn🌓 · Piebald Uneven🌒 · Deafness🕶️ · Hereditary Cataracts👓</span></div>
+    <div class="item"><span class="bullet">◆</span><span><span class="hl">Scout🦅</span> · <span class="hl">Herbalist💊</span> · <span class="hl">Hunter🗡️</span> · <span class="hl">Pupsitter🍼</span></span></div>
+    <div class="item"><span class="bullet">◆</span><span><span class="hl">Aggressive🔥</span> · <span class="hl">Stoic☯️</span> · <span class="hl">Romantic💗</span> · <span class="hl">Friendly⭐</span></span></div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── STUD SECTION ── -->
+  <div class="stud-wrap">
+    <div class="stud-header">
+      <a href="https://www.wolvden.com/wolf/6318075" class="stud-cta" target="_blank" rel="noopener">
+        🐺 For Stud — Mihas G2 Piebald 🌓
+      </a>
+
+      <div style="margin-top:20px;">
+        <a href="https://www.wolvden.com/wolf/6318075" target="_blank" rel="noopener">
+          <img
+            src="https://wolf.wolvden.com/f/e2/79/9d/e2799d4820b5392dc43831999c4fa4f184ace4bb.6318075.1778131445.png"
+            alt="Mihas G2 Piebald — sprite"
+            class="stud-sprite"
+          >
+        </a>
+      </div>
+    </div>
+
+    <div class="stud-image-wrap">
+      <img
+        src="https://i.pinimg.com/736x/5d/87/06/5d8706ac80fe6f511bcf2f8c4d0e37e9.jpg"
+        alt="Mihas G2 Piebald wolf"
+        class="stud-main-img"
+      >
+    </div>
+  </div>
+
+  <!-- ── FOOTER LINKS ── -->
+  <div class="footer-links">
+    <a href="https://www.wolvden.com/chatter/topic/143474?page=1" target="_blank" rel="noopener">Raise &amp; Chase Howling</a>
+    <a href="https://www.wolvden.com/g/society/217/topic/149539" target="_blank" rel="noopener">Howling Ebony Chaseds</a>
+  </div>
+
+  <div class="credit">
+    Images generated by Thayná B.S. on May 2nd, 2026 using Gemini ✨<br>
+    <i>🇧🇷 Imagens geradas por Thayná B.S. em 02/05/2026 com Gemini ✨</i>
+  </div>
+
+</div><!-- /page -->
+
+<script>
+  const html = document.documentElement;
+  const input = document.getElementById('tt');
+  const icon  = document.getElementById('ti');
+  const label = document.getElementById('tl');
+
+  function apply(dark) {
+    html.setAttribute('data-theme', dark ? 'dark' : 'light');
+    icon.textContent  = dark ? '☀️' : '🌙';
+    label.textContent = dark ? 'Light Mode' : 'Dark Mode';
+    input.checked = !dark;
+    localStorage.setItem('he-theme', dark ? 'dark' : 'light');
+  }
+
+  const saved = localStorage.getItem('he-theme') || 'dark';
+  apply(saved === 'dark');
+
+  input.addEventListener('change', () => apply(!input.checked));
+</script>
+</body>
+</html>
