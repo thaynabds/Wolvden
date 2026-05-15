@@ -1,0 +1,828 @@
+/* ═══════════════════════════════════════════════════════════════
+   HOWLING EBONY — Den CSS · Wolf Lover · Wolvden Den #12568
+   Tema: Dark Fantasy — Preto & Roxo Profundo
+   Crédito: Wolf Lover · Free para uso pessoal · Não revender
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── IMPORT FONTS ─────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&display=swap');
+
+/* ── CSS VARIABLES ────────────────────────────────────────────── */
+:root {
+  --bg-void:        #04040f;
+  --bg-deep:        #07071a;
+  --bg-mid:         #0d0d24;
+  --bg-card:        #0f0f28;
+  --bg-card-hover:  #141438;
+
+  --purple-900:     #1e0a4a;
+  --purple-800:     #2d1068;
+  --purple-700:     #4c1d95;
+  --purple-600:     #6d28d9;
+  --purple-500:     #7c3aed;
+  --purple-400:     #8b5cf6;
+  --purple-300:     #a78bfa;
+  --purple-200:     #c4b5fd;
+  --purple-100:     #ddd6fe;
+
+  --gold:           #c8953a;
+  --gold-light:     #e8b86d;
+  --silver:         #9db4c8;
+  --ice:            #b8d8f0;
+
+  --text-primary:   #e8e4f8;
+  --text-secondary: #9d8ec0;
+  --text-muted:     #5e5380;
+
+  --border-glow:    rgba(109, 40, 217, 0.6);
+  --border-subtle:  rgba(109, 40, 217, 0.25);
+  --border-faint:   rgba(109, 40, 217, 0.12);
+
+  --glow-sm:  0 0 12px rgba(109, 40, 217, 0.4);
+  --glow-md:  0 0 28px rgba(109, 40, 217, 0.55), 0 0 8px rgba(109, 40, 217, 0.3);
+  --glow-lg:  0 0 50px rgba(109, 40, 217, 0.6), 0 0 20px rgba(124, 58, 237, 0.4);
+
+  --radius-sm:  8px;
+  --radius-md:  14px;
+  --radius-lg:  20px;
+  --radius-xl:  28px;
+
+  --font-display: 'Cinzel', 'Georgia', serif;
+  --font-body:    'Crimson Pro', 'Georgia', serif;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RESET & BASE
+══════════════════════════════════════════════════════════════ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* ── BODY & BACKGROUND ────────────────────────────────────────── */
+body,
+body.theme_dark {
+  background-color: var(--bg-void) !important;
+  background-image:
+    /* Nebula radial — topo esquerdo */
+    radial-gradient(ellipse 70% 55% at 15% 8%,
+      rgba(76, 29, 149, 0.22) 0%, transparent 65%),
+    /* Nebula radial — centro direito */
+    radial-gradient(ellipse 50% 40% at 88% 35%,
+      rgba(109, 40, 217, 0.14) 0%, transparent 60%),
+    /* Brilho suave roxo — base */
+    radial-gradient(ellipse 80% 30% at 50% 100%,
+      rgba(45, 16, 104, 0.3) 0%, transparent 70%),
+    /* Estrelas simuladas via gradiente */
+    radial-gradient(ellipse 100% 100% at 50% 0%,
+      rgba(4, 4, 20, 0) 0%, var(--bg-void) 100%) !important;
+  color: var(--text-primary) !important;
+  font-family: var(--font-body) !important;
+  font-size: 1rem !important;
+  line-height: 1.72 !important;
+  /* Scrollbar personalizada */
+  scrollbar-width: thin;
+  scrollbar-color: var(--purple-600) var(--bg-deep);
+}
+
+body::-webkit-scrollbar       { width: 7px; }
+body::-webkit-scrollbar-track { background: var(--bg-void); }
+body::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--purple-700), var(--purple-500));
+  border-radius: 4px;
+}
+
+/* Modo claro — mantém legível mas respeitoso */
+body.theme_default {
+  background-color: #0d0b1a !important;
+  color: var(--text-primary) !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   WRAPPER / CONTAINER PRINCIPAL
+══════════════════════════════════════════════════════════════ */
+#page,
+.page-wrapper,
+.main-content,
+div.container,
+.content-wrapper {
+  background: transparent !important;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   NAVIGATION / HEADER DO SITE
+══════════════════════════════════════════════════════════════ */
+nav,
+#nav,
+.nav,
+.site-header,
+header.site-header {
+  background: linear-gradient(180deg, rgba(7,7,26,0.97) 0%, rgba(7,7,22,0.92) 100%) !important;
+  border-bottom: 1px solid var(--border-glow) !important;
+  box-shadow: 0 2px 24px rgba(109,40,217,0.25) !important;
+  backdrop-filter: blur(10px);
+}
+
+nav a,
+.nav a,
+.site-header a {
+  color: var(--purple-200) !important;
+  font-family: var(--font-display) !important;
+  font-size: 0.78rem !important;
+  letter-spacing: 0.08em !important;
+  transition: color 0.2s, text-shadow 0.2s;
+}
+
+nav a:hover,
+.nav a:hover {
+  color: #fff !important;
+  text-shadow: 0 0 10px rgba(167, 139, 250, 0.8) !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   DEN PAGE — WRAPPER
+══════════════════════════════════════════════════════════════ */
+.den-page,
+#den-content,
+.den-wrapper {
+  background: transparent !important;
+  padding: 24px 0 !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   CABEÇALHO DO DEN (Den Header / Banner)
+══════════════════════════════════════════════════════════════ */
+.den-header,
+.den-name-section,
+.pack-header {
+  position: relative;
+  background: linear-gradient(
+    155deg,
+    #0a0a1e 0%,
+    #100e28 40%,
+    #1e0a4a 75%,
+    #2d1068 100%
+  ) !important;
+  border: 2px solid var(--purple-600) !important;
+  border-radius: var(--radius-xl) !important;
+  padding: 42px 28px 36px !important;
+  text-align: center !important;
+  margin-bottom: 28px !important;
+  overflow: hidden;
+  box-shadow: var(--glow-lg) !important;
+}
+
+/* Linha decorativa topo */
+.den-header::before,
+.den-name-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--purple-700) 20%,
+    var(--purple-400) 50%,
+    var(--purple-700) 80%,
+    transparent 100%
+  );
+}
+
+/* Linha decorativa base */
+.den-header::after,
+.den-name-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--border-glow),
+    transparent
+  );
+}
+
+/* Nome do Den */
+.den-name,
+.pack-name,
+h1.den-title {
+  font-family: var(--font-display) !important;
+  font-size: clamp(1.4rem, 4.5vw, 2.6rem) !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.06em !important;
+  background: linear-gradient(
+    130deg,
+    var(--purple-100) 0%,
+    var(--purple-300) 30%,
+    var(--purple-400) 55%,
+    var(--gold-light) 80%,
+    var(--purple-200) 100%
+  ) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  text-shadow: none !important;
+  margin-bottom: 12px !important;
+  line-height: 1.2 !important;
+}
+
+/* Sub-info do den (owner, biome, etc.) */
+.den-info,
+.pack-info,
+.den-subtext {
+  color: var(--text-secondary) !important;
+  font-family: var(--font-body) !important;
+  font-size: 0.9rem !important;
+  letter-spacing: 0.04em !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   CARDS / BOXES GENÉRICOS
+══════════════════════════════════════════════════════════════ */
+.card,
+.box,
+.panel,
+.section-box,
+.content-box,
+.den-section,
+.info-card {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: var(--radius-md) !important;
+  padding: 24px 22px !important;
+  margin-bottom: 20px !important;
+  box-shadow: var(--glow-sm) !important;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.card:hover,
+.box:hover,
+.panel:hover,
+.den-section:hover {
+  border-color: var(--border-glow) !important;
+  box-shadow: var(--glow-md) !important;
+}
+
+/* ── Card Titles ──────────────────────────────────────────────── */
+.card-title,
+.box-title,
+.section-title,
+.panel-heading,
+h2, h3, h4 {
+  font-family: var(--font-display) !important;
+  color: var(--purple-300) !important;
+  font-size: 0.85rem !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+  border-bottom: 1px solid var(--border-subtle) !important;
+  padding-bottom: 12px !important;
+  margin-bottom: 18px !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   WOLVES LIST / GRID DE LOBOS
+══════════════════════════════════════════════════════════════ */
+.wolves-list,
+.wolf-grid,
+.wolves-grid,
+.den-wolves {
+  display: grid !important;
+  gap: 14px !important;
+  padding: 0 !important;
+}
+
+/* Card individual de lobo */
+.wolf-entry,
+.wolf-card,
+.wolf-item,
+.den-wolf {
+  background: var(--bg-mid) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: var(--radius-md) !important;
+  padding: 14px 16px !important;
+  transition: all 0.25s ease !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.wolf-entry::before,
+.wolf-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--purple-500), var(--purple-700));
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.wolf-entry:hover,
+.wolf-card:hover {
+  border-color: var(--purple-600) !important;
+  background: var(--bg-card-hover) !important;
+  box-shadow: var(--glow-sm), inset 0 0 20px rgba(109,40,217,0.05) !important;
+  transform: translateY(-1px);
+}
+
+.wolf-entry:hover::before,
+.wolf-card:hover::before {
+  opacity: 1;
+}
+
+/* Nome do lobo */
+.wolf-name,
+.wolf-entry .name,
+a.wolf-link {
+  font-family: var(--font-display) !important;
+  color: var(--purple-200) !important;
+  font-size: 0.97rem !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  transition: color 0.2s !important;
+}
+
+.wolf-name:hover,
+a.wolf-link:hover {
+  color: #fff !important;
+  text-shadow: 0 0 8px rgba(167,139,250,0.6) !important;
+}
+
+/* Stats/info do lobo */
+.wolf-stats,
+.wolf-entry .stats,
+.wolf-info {
+  color: var(--text-secondary) !important;
+  font-size: 0.82rem !important;
+  margin-top: 4px !important;
+}
+
+/* Marcas / tags de mutação */
+.wolf-tag,
+.mutation-tag,
+.wolf-badge {
+  display: inline-block;
+  font-size: 0.68rem !important;
+  padding: 2px 8px !important;
+  border-radius: 20px !important;
+  border: 1px solid var(--border-subtle) !important;
+  background: rgba(109,40,217,0.12) !important;
+  color: var(--purple-200) !important;
+  margin: 2px 2px 0 0 !important;
+  letter-spacing: 0.04em !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   IMAGENS DOS LOBOS (wolf sprites/portrait)
+══════════════════════════════════════════════════════════════ */
+.wolf-portrait,
+.wolf-image,
+img.wolf-img,
+.wolf-entry img {
+  border-radius: var(--radius-sm) !important;
+  border: 2px solid var(--border-subtle) !important;
+  box-shadow: var(--glow-sm) !important;
+  transition: border-color 0.25s, box-shadow 0.25s !important;
+}
+
+.wolf-portrait:hover,
+img.wolf-img:hover {
+  border-color: var(--purple-500) !important;
+  box-shadow: var(--glow-md) !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   TABELAS
+══════════════════════════════════════════════════════════════ */
+table {
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  width: 100% !important;
+}
+
+thead tr,
+tr.header-row {
+  background: linear-gradient(90deg, var(--purple-900), var(--purple-800)) !important;
+}
+
+thead th,
+th {
+  font-family: var(--font-display) !important;
+  color: var(--purple-200) !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  padding: 10px 14px !important;
+  border-bottom: 1px solid var(--border-glow) !important;
+  background: transparent !important;
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--border-faint) !important;
+  transition: background 0.18s !important;
+}
+
+tbody tr:hover {
+  background: rgba(109,40,217,0.07) !important;
+}
+
+td {
+  padding: 10px 14px !important;
+  color: var(--text-primary) !important;
+  vertical-align: middle !important;
+  border: none !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   LINKS GLOBAIS
+══════════════════════════════════════════════════════════════ */
+a {
+  color: var(--purple-300) !important;
+  text-decoration: none !important;
+  transition: color 0.2s, text-shadow 0.2s !important;
+}
+
+a:hover {
+  color: var(--purple-100) !important;
+  text-shadow: 0 0 8px rgba(167,139,250,0.5) !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   BOTÕES
+══════════════════════════════════════════════════════════════ */
+button,
+.btn,
+input[type="submit"],
+input[type="button"],
+.button {
+  background: linear-gradient(
+    135deg,
+    var(--purple-800) 0%,
+    var(--purple-700) 100%
+  ) !important;
+  color: var(--purple-100) !important;
+  border: 1px solid var(--purple-600) !important;
+  border-radius: var(--radius-sm) !important;
+  font-family: var(--font-display) !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  padding: 8px 18px !important;
+  cursor: pointer !important;
+  transition: all 0.22s ease !important;
+  box-shadow: var(--glow-sm) !important;
+}
+
+button:hover,
+.btn:hover,
+input[type="submit"]:hover {
+  background: linear-gradient(
+    135deg,
+    var(--purple-700) 0%,
+    var(--purple-600) 100%
+  ) !important;
+  box-shadow: var(--glow-md) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Botão de ação especial (ex: breed, sell) */
+.btn-primary,
+.btn-action,
+button.primary {
+  background: linear-gradient(
+    135deg,
+    var(--purple-600) 0%,
+    var(--purple-500) 100%
+  ) !important;
+  color: #fff !important;
+  border-color: var(--purple-400) !important;
+  box-shadow: var(--glow-md) !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   FORMULÁRIOS / INPUTS
+══════════════════════════════════════════════════════════════ */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="search"],
+textarea,
+select {
+  background: var(--bg-deep) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 8px 12px !important;
+  font-family: var(--font-body) !important;
+  transition: border-color 0.2s, box-shadow 0.2s !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+  border-color: var(--purple-500) !important;
+  box-shadow: 0 0 0 3px rgba(124,58,237,0.2) !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   SIDEBAR / PAINEL LATERAL
+══════════════════════════════════════════════════════════════ */
+.sidebar,
+#sidebar,
+aside {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: var(--radius-md) !important;
+  padding: 18px 14px !important;
+  box-shadow: var(--glow-sm) !important;
+}
+
+.sidebar h2,
+.sidebar h3,
+aside h2,
+aside h3 {
+  font-family: var(--font-display) !important;
+  color: var(--purple-300) !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   BADGES / TAGS ESPECIAIS
+══════════════════════════════════════════════════════════════ */
+
+/* Tag tier gold (T3) */
+.tag-t3,
+.tier-3,
+[data-tier="3"] {
+  background: linear-gradient(135deg, rgba(200,149,58,0.15), rgba(200,149,58,0.06)) !important;
+  border-color: rgba(200,149,58,0.5) !important;
+  color: var(--gold-light) !important;
+}
+
+/* Tag mutation */
+.tag-mut,
+.mutation {
+  background: linear-gradient(135deg, rgba(109,40,217,0.2), rgba(124,58,237,0.1)) !important;
+  border-color: var(--purple-500) !important;
+  color: var(--purple-100) !important;
+  font-weight: 700 !important;
+}
+
+/* Tag carrier */
+.tag-carrier,
+.carrier {
+  background: rgba(109,40,217,0.08) !important;
+  border-color: var(--border-subtle) !important;
+  color: var(--text-secondary) !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   DIVISORES DECORATIVOS
+══════════════════════════════════════════════════════════════ */
+hr,
+.divider,
+.rule-line {
+  border: none !important;
+  height: 1px !important;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--border-glow),
+    var(--purple-500),
+    var(--border-glow),
+    transparent
+  ) !important;
+  margin: 24px 0 !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   PAGINAÇÃO
+══════════════════════════════════════════════════════════════ */
+.pagination,
+.page-nav {
+  display: flex !important;
+  gap: 6px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 24px 0 !important;
+}
+
+.pagination a,
+.page-nav a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 32px !important;
+  height: 32px !important;
+  padding: 0 10px !important;
+  background: var(--bg-mid) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--text-secondary) !important;
+  font-family: var(--font-display) !important;
+  font-size: 0.78rem !important;
+  transition: all 0.2s !important;
+}
+
+.pagination a:hover,
+.pagination a.active,
+.page-nav a:hover {
+  background: var(--purple-800) !important;
+  border-color: var(--purple-500) !important;
+  color: var(--purple-100) !important;
+  box-shadow: var(--glow-sm) !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   MENSAGENS / ALERTS
+══════════════════════════════════════════════════════════════ */
+.alert,
+.message,
+.notice {
+  background: rgba(109,40,217,0.1) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-left: 4px solid var(--purple-500) !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 12px 16px !important;
+  color: var(--text-primary) !important;
+  font-family: var(--font-body) !important;
+}
+
+.alert-success {
+  border-left-color: #34d399 !important;
+  background: rgba(52,211,153,0.06) !important;
+}
+.alert-warning {
+  border-left-color: var(--gold) !important;
+  background: rgba(200,149,58,0.06) !important;
+}
+.alert-danger {
+  border-left-color: #ef4444 !important;
+  background: rgba(239,68,68,0.06) !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   FOOTER DO SITE
+══════════════════════════════════════════════════════════════ */
+footer,
+.site-footer,
+#footer {
+  background: linear-gradient(180deg, transparent, rgba(7,7,26,0.8)) !important;
+  border-top: 1px solid var(--border-subtle) !important;
+  color: var(--text-muted) !important;
+  font-family: var(--font-display) !important;
+  font-size: 0.7rem !important;
+  letter-spacing: 0.1em !important;
+  text-align: center !important;
+  padding: 20px !important;
+  margin-top: 40px !important;
+}
+
+footer a,
+.site-footer a {
+  color: var(--text-muted) !important;
+}
+footer a:hover,
+.site-footer a:hover {
+  color: var(--purple-300) !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   SCROLLBAR WOLF (dentro de boxes overflow)
+══════════════════════════════════════════════════════════════ */
+.scroll-box,
+.overflow-y {
+  scrollbar-width: thin;
+  scrollbar-color: var(--purple-700) transparent;
+}
+.scroll-box::-webkit-scrollbar       { width: 5px; }
+.scroll-box::-webkit-scrollbar-track { background: transparent; }
+.scroll-box::-webkit-scrollbar-thumb {
+  background: var(--purple-700);
+  border-radius: 4px;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   ANIMAÇÕES SUAVES
+══════════════════════════════════════════════════════════════ */
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: var(--glow-sm); }
+  50%       { box-shadow: var(--glow-md); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+/* Aplica fade-in suave ao conteúdo do den */
+.den-page > *,
+.den-content > * {
+  animation: fadeInUp 0.5s ease both;
+}
+.den-page > *:nth-child(1) { animation-delay: 0.05s; }
+.den-page > *:nth-child(2) { animation-delay: 0.10s; }
+.den-page > *:nth-child(3) { animation-delay: 0.15s; }
+.den-page > *:nth-child(4) { animation-delay: 0.20s; }
+.den-page > *:nth-child(5) { animation-delay: 0.25s; }
+
+/* ══════════════════════════════════════════════════════════════
+   DEN CUSTOM HTML — selectors para o HTML que foi colado
+   (Howling Ebony layout com inline styles sobrescritos)
+══════════════════════════════════════════════════════════════ */
+
+/* Container raiz do den custom */
+.den-text-content,
+.den-custom-html,
+.den-description {
+  background: transparent !important;
+  color: var(--text-primary) !important;
+  font-family: var(--font-body) !important;
+  line-height: 1.72 !important;
+}
+
+/* Títulos dentro do custom HTML */
+.den-text-content div[style*="letter-spacing"],
+.den-text-content div[style*="text-transform: uppercase"] {
+  font-family: var(--font-display) !important;
+}
+
+/* Links dentro do HTML custom */
+.den-text-content a[style],
+.den-description a {
+  color: var(--purple-300) !important;
+  text-decoration: none !important;
+}
+.den-text-content a:hover {
+  color: var(--purple-100) !important;
+}
+
+/* ── Badges/tags tipo span nos cards custom ─────────────────── */
+.den-text-content span[style*="display:inline-block"],
+.den-description span[style*="border-radius:8px"] {
+  transition: transform 0.15s, box-shadow 0.15s !important;
+}
+.den-text-content span[style*="display:inline-block"]:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 2px 8px rgba(109,40,217,0.4) !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVO
+══════════════════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  .den-header,
+  .den-name-section {
+    padding: 28px 16px 24px !important;
+  }
+
+  .wolves-list,
+  .wolf-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   MODO CLARO (tema_default) — override para manter dark
+   O Wolvden tem body.theme_default para modo claro
+══════════════════════════════════════════════════════════════ */
+body.theme_default {
+  background-color: #08081e !important;
+  color: var(--text-primary) !important;
+}
+body.theme_default .card,
+body.theme_default .box,
+body.theme_default .panel {
+  background: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+}
+body.theme_default a {
+  color: var(--purple-300) !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   EXTRA: Cursor personalizado (opcional — pode remover se quiser)
+══════════════════════════════════════════════════════════════ */
+/* 
+body {
+  cursor: url('URL_DO_SEU_CURSOR_AQUI.png'), auto;
+}
+*/
+
+/* ══════════════════════════════════════════════════════════════
+   FIM DO CSS — Howling Ebony · Wolf Lover · Den #12568
+   Crédito: Wolf Lover · Uso pessoal · Não revender
+══════════════════════════════════════════════════════════════ */
