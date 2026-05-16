@@ -1,0 +1,696 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   HOWLING EBONY — Den CSS · Wolf Lover · Den #12568
+   Tema: Dark Lunar Fantasy · Preto & Roxo Profundo
+   ⚠️ Não altera tamanhos de imagens, ícones, fontes ou layout nativo.
+      Apenas: cores, fundos, bordas, sombras e decoração.
+   Crédito: Wolf Lover · Uso pessoal · Não revender
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── VARIÁVEIS ──────────────────────────────────────────────────────── */
+:root {
+  --p900: #1a0845;
+  --p800: #2a1070;
+  --p700: #4c1d95;
+  --p600: #6d28d9;
+  --p500: #7c3aed;
+  --p400: #8b5cf6;
+  --p300: #a78bfa;
+  --p200: #c4b5fd;
+  --p100: #ddd6fe;
+
+  --gold-lt: #e8b86d;
+
+  --t1: #e8e4f8;
+  --t2: #9d8ec0;
+  --t3: #56507a;
+
+  --b-glow:  rgba(109,40,217,.65);
+  --b-mid:   rgba(109,40,217,.30);
+  --b-sub:   rgba(109,40,217,.18);
+  --b-faint: rgba(109,40,217,.08);
+
+  --g-xs: 0 0  8px rgba(109,40,217,.30);
+  --g-sm: 0 0 18px rgba(109,40,217,.45), 0 0 5px rgba(109,40,217,.25);
+  --g-md: 0 0 32px rgba(109,40,217,.55), 0 0 10px rgba(124,58,237,.30);
+  --g-lg: 0 0 55px rgba(109,40,217,.65), 0 0 22px rgba(124,58,237,.40);
+
+  --r1: 8px;
+  --r2: 12px;
+  --r3: 16px;
+  --r4: 22px;
+
+  --ease: .22s cubic-bezier(.4,0,.2,1);
+
+  /* Glassmorphism — semi-transparente com blur */
+  --glass-sidebar: rgba(6, 4, 18, 0.88);  /* sidebar: bem sólida */
+  --glass-low:     rgba(6, 4, 18, 0.82);  /* conteúdo central: 82% opacidade */
+  --glass-mid:     rgba(6, 4, 18, 0.88);
+  --glass-high:    rgba(6, 4, 18, 0.93);
+}
+
+/* ── RESET MÍNIMO ───────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* ════════════════════════════════════════════════════════════════════
+   BODY — FUNDO NEBULOSA ROXA (fixed, cover)
+════════════════════════════════════════════════════════════════════ */
+body,
+body.theme_dark,
+body.theme_default {
+  background-color: #03030e !important;
+  background-image:
+    linear-gradient(180deg,
+      rgba(3,3,14,.50) 0%,
+      rgba(3,3,14,.10) 10%,
+      transparent      30%,
+      transparent      70%,
+      rgba(3,3,14,.15) 100%
+    ),
+    url("https://thaynabds.github.io/Wolvden/PurpleGalaxyMay2026.png") !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+  color: var(--t1) !important;
+  scrollbar-width: thin;
+  scrollbar-color: var(--p600) #06061a;
+}
+body::-webkit-scrollbar       { width: 6px; }
+body::-webkit-scrollbar-track { background: #03030e; }
+body::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--p700), var(--p500));
+  border-radius: 3px;
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   TRANSPARÊNCIA GLOBAL
+   Tudo que o Wolvden coloca como fundo cinza/preto → transparent
+════════════════════════════════════════════════════════════════════ */
+#wrap, #content_wrap, .content_wrap,
+#content, .content,
+#main, #main-content, .main, .main-content,
+#page, .page,
+.den_wrap, .den-wrap,
+.den_page, .den-page,
+.den_content, .den-content,
+.pack_content, .pack-content,
+.den_wolves, .den-wolves, #den_wolves,
+.wolves_list, .wolf_list,
+.wolves_container, .wolves_container,
+.wolf-list-wrap, .wolf_list_wrap,
+.collapse, .collapsing, .collapse.show,
+.wolf-group, .wolf_group,
+.pack-group, .pack_group,
+.den-section, .den_section,
+.den_description, .den-description,
+.den_text, .den-text,
+table, tbody, tfoot {
+  background: transparent !important;
+}
+
+/* Células de tabela — transparent, cor só via tr */
+td { background: transparent !important; }
+
+
+/* ════════════════════════════════════════════════════════════════════
+   LOGO DO WOLVDEN — garante sobreposição sobre a barra secundária
+   O logo (img no canto superior esquerdo) deve flutuar acima de tudo
+════════════════════════════════════════════════════════════════════ */
+
+/* Header principal fica acima de tudo */
+nav, #navigation, header,
+.navbar, .nav, .site-header,
+#header, .site-header, .main-header {
+  position: relative !important;
+  z-index: 1000 !important;
+}
+
+/* Logo / imagem do site dentro do header */
+nav img, header img,
+#navigation img,
+.navbar img, .site-header img,
+.navbar-brand img,
+.logo img, #logo img,
+a.logo, a#logo,
+.site-logo, #site-logo,
+img.logo, img#logo,
+.navbar-brand {
+  position: relative !important;
+  z-index: 1010 !important;
+  /* ⚠️ Sem width/height — mantém tamanho nativo */
+}
+
+/* Barra secundária (breadcrumb/sub-nav) fica abaixo do header */
+.breadcrumb, .breadcrumb-bar, #breadcrumb,
+.sub-nav, .subnav, .secondary-nav,
+nav.secondary, .nav-secondary,
+.path-bar, .path_bar,
+div.breadcrumb, ol.breadcrumb, ul.breadcrumb {
+  position: relative !important;
+  z-index: 990 !important;
+  background: transparent !important;
+  border-bottom: 1px solid var(--b-faint) !important;
+  box-shadow: none !important;
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   NAVEGAÇÃO PRINCIPAL
+   Barra do topo: nav + sub-barra de breadcrumb
+════════════════════════════════════════════════════════════════════ */
+
+/* Barra principal (logo + menu + moedas) */
+nav, #navigation, header,
+.navbar, .nav, .site-header {
+  background: rgba(4, 3, 16, 0.97) !important;
+  border-bottom: 1px solid var(--b-glow) !important;
+  box-shadow: 0 2px 24px rgba(109,40,217,.28) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+}
+
+/* Barra cinza do breadcrumb (Home / Kuro Ryu / Den) → transparente */
+.breadcrumb, .breadcrumb-bar, #breadcrumb,
+.sub-nav, .subnav, .secondary-nav,
+nav.secondary, .nav-secondary,
+.path-bar, .path_bar,
+div.breadcrumb, ol.breadcrumb, ul.breadcrumb {
+  background: transparent !important;
+  border-bottom: 1px solid var(--b-faint) !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+nav a, #navigation a, header a, .nav a {
+  color: var(--p200) !important;
+  transition: color var(--ease), text-shadow var(--ease) !important;
+}
+nav a:hover, #navigation a:hover {
+  color: #fff !important;
+  text-shadow: 0 0 10px rgba(167,139,250,.8) !important;
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   ABAS DO DEN (Fanindra NBW 263 B&W's Den | Kuro Ryu's Profile)
+════════════════════════════════════════════════════════════════════ */
+.nav-tabs, .tab-bar, .den-tabs, .pack-tabs {
+  background: transparent !important;
+  border-bottom: 1px solid var(--b-mid) !important;
+}
+.nav-tabs .nav-link, .nav-tabs .nav-item a,
+.tab-bar a, .den-tabs a {
+  background: var(--glass-low) !important;
+  color: var(--t2) !important;
+  border: 1px solid var(--b-sub) !important;
+  border-radius: var(--r1) var(--r1) 0 0 !important;
+  transition: all var(--ease) !important;
+}
+.nav-tabs .nav-link.active, .nav-tabs .nav-item a.active,
+.nav-tabs .nav-link:hover {
+  background: rgba(109,40,217,.35) !important;
+  color: var(--p100) !important;
+  border-color: var(--p600) !important;
+  box-shadow: var(--g-xs) !important;
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   SIDEBAR — glassmorphism leve
+════════════════════════════════════════════════════════════════════ */
+.sidebar, #sidebar, aside {
+  background: var(--glass-sidebar) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  border: 1px solid var(--b-sub) !important;
+  border-radius: var(--r2) !important;
+  box-shadow: var(--g-xs) !important;
+  color: var(--t1) !important;
+}
+.sidebar h1, .sidebar h2, .sidebar h3,
+.sidebar h4, .sidebar h5 {
+  color: var(--p300) !important;
+  border-bottom: 1px solid var(--b-sub) !important;
+  /* ⚠️ Sem font-size — mantém o nativo */
+}
+.sidebar a { color: var(--p300) !important; }
+.sidebar a:hover { color: var(--p100) !important; }
+
+/* ════════════════════════════════════════════════════════════════════
+   CABEÇALHO DO DEN
+   Fundo: roxo escuro gradiente + borda brilhante + linha ornamental
+════════════════════════════════════════════════════════════════════ */
+.den_header, .den-header, .pack_header, .pack-header {
+  position: relative !important;
+  background: linear-gradient(150deg,
+    rgba(9,9,32,.97)  0%,
+    rgba(16,13,42,.97) 42%,
+    rgba(28,9,72,.97)  72%,
+    rgba(42,16,104,.97) 100%
+  ) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 2px solid var(--p600) !important;
+  border-radius: var(--r4) !important;
+  box-shadow: var(--g-lg) !important;
+  overflow: hidden !important;
+}
+/* Linha ornamental topo */
+.den_header::before, .den-header::before,
+.pack_header::before, .pack-header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg,
+    transparent 0%, var(--p700) 20%,
+    var(--p400) 50%, var(--p700) 80%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Nome do den — gradiente de texto */
+.den_name, .den-name, .pack_name, .pack-name {
+  font-weight: 900 !important;
+  letter-spacing: .05em !important;
+  background: linear-gradient(130deg,
+    var(--p100), var(--p300), var(--p400),
+    var(--gold-lt), var(--p200)) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  /* ⚠️ Sem font-size/font-family — mantém o nativo */
+}
+
+.den_info, .den-info, .pack_info { color: var(--t2) !important; }
+
+/* ════════════════════════════════════════════════════════════════════
+   CARDS DE NAVEGAÇÃO DO DEN
+   Pack Dynasty · Pack Overview · Breeding · Pupsitting · Nesting · Socializing
+   Arredondamento nos cantos conforme os prints
+════════════════════════════════════════════════════════════════════ */
+a[href*="/dynasty"],
+a[href*="/overview"],
+a[href*="/breeding"],
+a[href*="/pupsitting"],
+a[href*="/nesting"],
+a[href*="/socializ"] {
+  display: block !important;
+  position: relative !important;
+  border-radius: var(--r3) !important;   /* cantos arredondados como no print */
+  overflow: hidden !important;
+  border: 2px solid var(--b-sub) !important;
+  box-shadow: var(--g-xs) !important;
+  transition: border-color var(--ease), box-shadow var(--ease), transform var(--ease) !important;
+  text-decoration: none !important;
+  /* ⚠️ Sem width/height — tamanho nativo preservado */
+}
+a[href*="/dynasty"]:hover,
+a[href*="/overview"]:hover,
+a[href*="/breeding"]:hover,
+a[href*="/pupsitting"]:hover,
+a[href*="/nesting"]:hover,
+a[href*="/socializ"]:hover {
+  border-color: var(--p500) !important;
+  box-shadow: var(--g-md) !important;
+  transform: translateY(-3px) !important;
+}
+
+/* Label/legenda dos cards (Pack Dynasty, Breeding, etc.) */
+a[href*="/dynasty"] span, a[href*="/dynasty"] p,
+a[href*="/overview"] span, a[href*="/overview"] p,
+a[href*="/breeding"] span, a[href*="/breeding"] p,
+a[href*="/pupsitting"] span, a[href*="/pupsitting"] p,
+a[href*="/nesting"] span, a[href*="/nesting"] p,
+a[href*="/socializ"] span, a[href*="/socializ"] p {
+  background: linear-gradient(180deg,
+    transparent 0%, rgba(6,3,20,.90) 100%) !important;
+  color: var(--p100) !important;
+  letter-spacing: .08em !important;
+  /* ⚠️ Sem font-size/font-family — mantém o nativo */
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   TABELA DE LOBOS
+   Cabeçalho roxo · Linhas zebradas translúcidas · Hover roxo
+════════════════════════════════════════════════════════════════════ */
+/* Cabeçalho (Name / Stats / Info / Currents) */
+thead, thead tr {
+  background: linear-gradient(135deg,
+    rgba(26,8,69,.92) 0%, rgba(42,16,104,.92) 100%) !important;
+}
+thead th, th {
+  background: transparent !important;
+  color: var(--p200) !important;
+  border-bottom: 2px solid var(--p600) !important;
+  letter-spacing: .12em !important;
+  /* ⚠️ Sem font-size/font-family/text-transform — mantém o nativo */
+}
+
+/* Linhas zebradas */
+tbody tr:nth-child(odd)  { background: transparent !important; }
+tbody tr:nth-child(even) { background: rgba(109,40,217,.05) !important; }
+tbody tr:hover           { background: rgba(109,40,217,.13) !important; }
+tbody tr:hover td        { background: transparent !important; }
+
+/* Células */
+td {
+  color: var(--t1) !important;
+  border: none !important;
+  vertical-align: middle !important;
+}
+
+/* Cabeçalho roxo das seções (ex: "CASTLE CAVE HOWL 3X HERDEIROS") */
+.wolves-section-header, .wolf-group-header,
+.group-heading, .table-heading,
+tr.group-header td, tr.group-header th,
+thead.group-head tr {
+  background: linear-gradient(135deg,
+    rgba(26,8,69,.95) 0%,
+    rgba(42,16,104,.95) 60%,
+    rgba(76,29,149,.95) 100%) !important;
+  border: 1px solid var(--p600) !important;
+  border-radius: var(--r1) !important;
+  color: var(--p100) !important;
+  letter-spacing: .10em !important;
+  box-shadow: var(--g-xs) !important;
+}
+
+/* Botão Collapse */
+button[data-toggle="collapse"],
+button[data-bs-toggle="collapse"],
+a[data-toggle="collapse"],
+a[data-bs-toggle="collapse"],
+.collapse-btn, .btn-collapse {
+  background: linear-gradient(135deg, var(--p700), var(--p600)) !important;
+  border: 1px solid var(--p400) !important;
+  border-radius: var(--r1) !important;
+  color: var(--p100) !important;
+  box-shadow: var(--g-xs) !important;
+  transition: all var(--ease) !important;
+  /* ⚠️ Sem font-size — mantém o nativo */
+}
+button[data-toggle="collapse"]:hover,
+button[data-bs-toggle="collapse"]:hover,
+.collapse-btn:hover {
+  background: linear-gradient(135deg, var(--p600), var(--p500)) !important;
+  box-shadow: var(--g-sm) !important;
+}
+
+/* Imagem do lobo — borda e arredondamento leve, sem alterar tamanho */
+.wolf_image, .wolf-image,
+.wolf_card img, .wolf_entry img,
+img.wolf_img {
+  border: 2px solid var(--b-sub) !important;
+  border-radius: var(--r1) !important;
+  box-shadow: var(--g-xs) !important;
+  transition: border-color var(--ease), box-shadow var(--ease) !important;
+  /* ⚠️ SEM width, height, object-fit */
+}
+.wolf_image:hover, .wolf_card img:hover { border-color: var(--p500) !important; }
+
+/* Nome do lobo */
+.wolf_name, .wolf-name,
+.wolf_card .name, .wolf_entry .name {
+  color: var(--p200) !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  transition: color var(--ease) !important;
+}
+.wolf_name:hover, a.wolf_name:hover { color: #fff !important; }
+
+/* Stats secundárias */
+.wolf_stats, .wolf-stats,
+.wolf_info, .wolf-info {
+  color: var(--t2) !important;
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   BARRAS DE STATUS — CORES ORIGINAIS DO WOLVDEN PRESERVADAS
+   Seletores Bootstrap confirmados pela comunidade
+   Apenas o trilho (fundo) é escurecido; as cores das barras são
+   exatamente as que o site usa.
+════════════════════════════════════════════════════════════════════ */
+
+/* Trilho — fundo escuro para as barras se destacarem */
+div.progress {
+  background-color: rgba(6, 4, 18, 0.90) !important;
+  border: 1px solid rgba(109,40,217,.20) !important;
+  border-radius: 4px !important;
+  overflow: hidden !important;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.5) !important;
+}
+
+/* ENERGY / Energia — verde original Bootstrap */
+div.progress-bar.bg-success {
+  background-color: #28a745 !important;
+  box-shadow: 0 0 4px rgba(40,167,69,.5) !important;
+}
+
+/* HUNGER / Fome — vermelho original Bootstrap */
+div.progress-bar.bg-danger {
+  background-color: #dc3545 !important;
+  box-shadow: 0 0 4px rgba(220,53,69,.5) !important;
+}
+
+/* HP — azul-cyan original Bootstrap (bg-info) */
+div.progress-bar.bg-info {
+  background-color: #17a2b8 !important;
+  box-shadow: 0 0 4px rgba(23,162,184,.5) !important;
+}
+
+/* EXP — azul Bootstrap (bg-primary) */
+div.progress-bar.bg-primary,
+.progress-bar.bg-primary {
+  background-color: #007bff !important;
+  box-shadow: 0 0 4px rgba(0,123,255,.5) !important;
+}
+
+/* MOOD / Humor — amarelo Bootstrap (bg-warning) */
+div.progress-bar.bg-warning {
+  background-color: #ffc107 !important;
+  box-shadow: 0 0 4px rgba(255,193,7,.4) !important;
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   CAIXAS DO HTML CUSTOMIZADO DO DEN
+   .boxcontainer · .Box1/2/3 · .hoverbox1/2/3
+════════════════════════════════════════════════════════════════════ */
+.boxcontainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+  background: transparent !important;
+}
+
+.Box1, .Box2, .Box3 {
+  background: var(--glass-low) !important;
+  backdrop-filter: blur(6px) !important;
+  -webkit-backdrop-filter: blur(6px) !important;
+  border: 1px solid var(--b-sub) !important;
+  border-radius: var(--r2) !important;
+  box-shadow: var(--g-xs) !important;
+  color: var(--t1) !important;
+  transition: border-color var(--ease), box-shadow var(--ease) !important;
+}
+.Box1:hover, .Box2:hover, .Box3:hover {
+  border-color: var(--b-mid) !important;
+  box-shadow: var(--g-sm) !important;
+}
+.Box1 { flex: 1 1 28%; min-width: 180px; }
+.Box2 { flex: 1 1 45%; min-width: 240px; }
+.Box3 { flex: 1 1 98%; }
+
+.hoverbox1, .hoverbox2, .hoverbox3 {
+  background: var(--glass-low) !important;
+  backdrop-filter: blur(6px) !important;
+  -webkit-backdrop-filter: blur(6px) !important;
+  border: 1px solid var(--b-sub) !important;
+  border-radius: var(--r2) !important;
+  box-shadow: var(--g-xs) !important;
+  color: var(--t1) !important;
+  overflow: hidden;
+  transition: all var(--ease) !important;
+}
+.hoverbox1:hover, .hoverbox2:hover, .hoverbox3:hover {
+  border-color: var(--p600) !important;
+  background: rgba(30,10,60,.50) !important;
+  box-shadow: var(--g-md) !important;
+}
+.hoverbox1 { flex: 1 1 28%; min-width: 180px; }
+.hoverbox2 { flex: 1 1 45%; min-width: 240px; }
+.hoverbox3 { flex: 1 1 98%; }
+
+/* ════════════════════════════════════════════════════════════════════
+   LINKS GLOBAIS
+════════════════════════════════════════════════════════════════════ */
+a {
+  color: var(--p300) !important;
+  text-decoration: none !important;
+  transition: color var(--ease) !important;
+}
+a:hover {
+  color: var(--p100) !important;
+  text-shadow: 0 0 8px rgba(167,139,250,.4) !important;
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   BOTÕES
+════════════════════════════════════════════════════════════════════ */
+button, .btn,
+input[type="submit"],
+input[type="button"],
+.button {
+  background: linear-gradient(135deg, var(--p800), var(--p700)) !important;
+  color: var(--p100) !important;
+  border: 1px solid var(--p600) !important;
+  border-radius: var(--r1) !important;
+  cursor: pointer !important;
+  transition: all var(--ease) !important;
+  box-shadow: var(--g-xs) !important;
+  /* ⚠️ Sem font-size/padding — mantém o nativo */
+}
+button:hover, .btn:hover, input[type="submit"]:hover {
+  background: linear-gradient(135deg, var(--p700), var(--p600)) !important;
+  box-shadow: var(--g-md) !important;
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   INPUTS
+════════════════════════════════════════════════════════════════════ */
+input[type="text"], input[type="number"],
+input[type="email"], input[type="search"],
+input[type="password"], textarea, select {
+  background: rgba(6,4,18,.90) !important;
+  color: var(--t1) !important;
+  border: 1px solid var(--b-mid) !important;
+  border-radius: var(--r1) !important;
+  transition: border-color var(--ease), box-shadow var(--ease) !important;
+}
+input:focus, textarea:focus, select:focus {
+  outline: none !important;
+  border-color: var(--p500) !important;
+  box-shadow: 0 0 0 3px rgba(124,58,237,.22) !important;
+}
+::placeholder { color: var(--t3) !important; }
+
+/* ════════════════════════════════════════════════════════════════════
+   PAINÉIS GENÉRICOS / CARDS DO BOOTSTRAP
+   Fundo semi-transparente em vez de cinza sólido
+════════════════════════════════════════════════════════════════════ */
+.panel, .panel-default, .panel-body, .panel-heading,
+.card, .card-body, .card-header,
+.well, .jumbotron, .section, .block {
+  background: var(--glass-low) !important;
+  backdrop-filter: blur(6px) !important;
+  -webkit-backdrop-filter: blur(6px) !important;
+  border-color: var(--b-sub) !important;
+  color: var(--t1) !important;
+}
+/* bg-dark / bg-secondary — transparência em vez de cinza */
+.bg-dark     { background: rgba(6,4,18,.55) !important; }
+.bg-light,
+.bg-white,
+.bg-secondary { background: var(--glass-low) !important; }
+
+/* ════════════════════════════════════════════════════════════════════
+   FOOTER · ALERTAS · PAGINAÇÃO · HR
+════════════════════════════════════════════════════════════════════ */
+footer, #footer, .footer, .site_footer {
+  background: transparent !important;
+  border-top: 1px solid var(--b-sub) !important;
+  color: var(--t3) !important;
+}
+footer a { color: var(--t3) !important; }
+footer a:hover { color: var(--p300) !important; }
+
+hr {
+  border: none !important;
+  height: 1px !important;
+  background: linear-gradient(90deg,
+    transparent, var(--b-glow), var(--p500),
+    var(--b-glow), transparent) !important;
+}
+
+.alert, .flash, .notice, .message {
+  background: rgba(109,40,217,.10) !important;
+  border: 1px solid var(--b-sub) !important;
+  border-left: 4px solid var(--p500) !important;
+  border-radius: var(--r1) !important;
+  color: var(--t1) !important;
+}
+.alert-success { border-left-color: #28a745 !important; background: rgba(40,167,69,.08) !important; }
+.alert-warning  { border-left-color: #ffc107 !important; background: rgba(255,193,7,.06) !important; }
+.alert-danger   { border-left-color: #dc3545 !important; background: rgba(220,53,69,.08) !important; }
+
+.pagination a, .page_nav a, .pager a {
+  background: var(--glass-low) !important;
+  border: 1px solid var(--b-sub) !important;
+  border-radius: var(--r1) !important;
+  color: var(--t2) !important;
+  transition: all var(--ease) !important;
+}
+.pagination a:hover, .pagination a.active, .pager a:hover {
+  background: rgba(109,40,217,.40) !important;
+  border-color: var(--p500) !important;
+  color: var(--p100) !important;
+  box-shadow: var(--g-xs) !important;
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   TOOLTIPS · BADGES
+════════════════════════════════════════════════════════════════════ */
+.tooltip, [role="tooltip"] {
+  background: rgba(14,8,40,.95) !important;
+  border: 1px solid var(--b-mid) !important;
+  border-radius: var(--r1) !important;
+  color: var(--t1) !important;
+  box-shadow: var(--g-sm) !important;
+}
+.badge, .tag, .label {
+  border-radius: 20px !important;
+  letter-spacing: .04em !important;
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   RESPONSIVIDADE — apenas caixas do HTML customizado
+   Restante usa layout responsivo nativo do Wolvden
+════════════════════════════════════════════════════════════════════ */
+@media (max-width: 480px) {
+  .boxcontainer { flex-direction: column !important; }
+  .Box1, .Box2, .Box3,
+  .hoverbox1, .hoverbox2, .hoverbox3 {
+    flex: 1 1 100% !important; min-width: unset !important;
+  }
+}
+@media (min-width: 481px) and (max-width: 640px) {
+  .Box1, .hoverbox1 { flex: 1 1 calc(50% - 6px) !important; min-width: 140px !important; }
+  .Box2, .hoverbox2 { flex: 1 1 100% !important; }
+}
+@media (min-width: 641px) and (max-width: 1023px) {
+  .Box1, .hoverbox1 { flex: 1 1 calc(33% - 8px) !important; min-width: 160px !important; }
+  .Box2, .hoverbox2 { flex: 1 1 calc(48% - 8px) !important; min-width: 220px !important; }
+  .Box3, .hoverbox3 { flex: 1 1 100% !important; }
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   ANIMAÇÃO SUAVE DE ENTRADA
+════════════════════════════════════════════════════════════════════ */
+@keyframes wolvdenFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.den_wrap, .den-wrap,
+.boxcontainer, .den_description, .den-description {
+  animation: wolvdenFadeIn .4s ease both;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   FIM DO CSS
+   HOWLING EBONY · Wolf Lover · Den #12568
+   ⚠️ Tamanhos nativos de imagens, ícones e fontes do Wolvden preservados
+   Crédito: Wolf Lover · Uso pessoal · Não revender
+════════════════════════════════════════════════════════════════════ */
