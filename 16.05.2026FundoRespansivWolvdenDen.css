@@ -1,0 +1,662 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   HOWLING EBONY — Den CSS · Wolf Lover · Den #12568
+   Tema: Dark Lunar Fantasy · Preto & Roxo Profundo
+   ⚠️ Esta folha NÃO altera tamanhos de imagens, ícones ou sprites
+      que o Wolvden já define nativamente. Apenas cores, fontes,
+      fundos, bordas e decoração.
+   Crédito: Wolf Lover · Uso pessoal · Não revender
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&display=swap');
+
+/* ────────────────────────────────────────────────────────────────────
+   VARIÁVEIS DE COR E TIPOGRAFIA
+──────────────────────────────────────────────────────────────────── */
+:root {
+  --void:      #03030e;
+  --deep:      #06061a;
+  --mid:       #0b0b22;
+  --card:      #0e0e26;
+  --card-h:    #13132e;
+
+  --p900: #1a0845;
+  --p800: #2a1070;
+  --p700: #4c1d95;
+  --p600: #6d28d9;
+  --p500: #7c3aed;
+  --p400: #8b5cf6;
+  --p300: #a78bfa;
+  --p200: #c4b5fd;
+  --p100: #ddd6fe;
+
+  --gold:    #c8953a;
+  --gold-lt: #e8b86d;
+  --silver:  #9db4c8;
+  --ice:     #b8d8f0;
+
+  --t1: #e8e4f8;
+  --t2: #9d8ec0;
+  --t3: #56507a;
+
+  --b-glow:   rgba(109,40,217,.65);
+  --b-mid:    rgba(109,40,217,.30);
+  --b-sub:    rgba(109,40,217,.16);
+  --b-faint:  rgba(109,40,217,.08);
+
+  --g-xs: 0 0  8px rgba(109,40,217,.30);
+  --g-sm: 0 0 18px rgba(109,40,217,.45), 0 0 5px rgba(109,40,217,.25);
+  --g-md: 0 0 32px rgba(109,40,217,.55), 0 0 10px rgba(124,58,237,.30);
+  --g-lg: 0 0 55px rgba(109,40,217,.65), 0 0 22px rgba(124,58,237,.40);
+
+  --r1: 8px;
+  --r2: 12px;
+  --r3: 16px;
+  --r4: 22px;
+
+  --fd: 'Cinzel', 'Georgia', serif;
+  --fb: 'Crimson Pro', 'Palatino', serif;
+
+  --ease: .22s cubic-bezier(.4,0,.2,1);
+}
+
+/* ────────────────────────────────────────────────────────────────────
+   RESET MÍNIMO — só o necessário
+──────────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* ────────────────────────────────────────────────────────────────────
+   BODY — FUNDO NEBULOSA ROXA
+──────────────────────────────────────────────────────────────────── */
+body,
+body.theme_dark {
+  /* Cor de fallback caso a imagem não carregue */
+  background-color: #03030e !important;
+
+  background-image:
+    /* Escurecimento suave no topo para o nav ficar legível */
+    linear-gradient(180deg,
+      rgba(3,3,14,.55) 0%,
+      rgba(3,3,14,.15) 12%,
+      transparent      35%,
+      transparent      65%,
+      rgba(3,3,14,.20) 100%
+    ),
+    url("https://i.ibb.co/mVjkwQGG/Purple-Galaxy-May-2026.png") !important;
+
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+
+  color: var(--t1) !important;
+  font-family: var(--fb) !important;
+  scrollbar-width: thin;
+  scrollbar-color: var(--p600) #06061a;
+}
+
+/* Modo claro → mesmo fundo */
+body.theme_default {
+  background-color: #03030e !important;
+  background-image:
+    linear-gradient(180deg,
+      rgba(3,3,14,.55) 0%,
+      rgba(3,3,14,.15) 12%,
+      transparent      35%,
+      transparent      65%,
+      rgba(3,3,14,.20) 100%
+    ),
+    url("https://i.ibb.co/mVjkwQGG/Purple-Galaxy-May-2026.png") !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+  color: var(--t1) !important;
+}
+body::-webkit-scrollbar       { width: 6px; }
+body::-webkit-scrollbar-track { background: var(--void); }
+body::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--p700), var(--p500));
+  border-radius: 3px;
+}
+
+/* ────────────────────────────────────────────────────────────────────
+   NAVEGAÇÃO DO SITE
+   Usa os seletores reais do Wolvden: nav, .nav, #navigation
+──────────────────────────────────────────────────────────────────── */
+nav, #navigation, .nav, header {
+  background: rgba(6,6,26,.97) !important;
+  border-bottom: 1px solid var(--b-glow) !important;
+  box-shadow: 0 2px 20px rgba(109,40,217,.22) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+nav a, #navigation a, .nav a, header a {
+  color: var(--p200) !important;
+  font-family: var(--fd) !important;
+  letter-spacing: .08em !important;
+  transition: color var(--ease), text-shadow var(--ease) !important;
+}
+nav a:hover, #navigation a:hover {
+  color: #fff !important;
+  text-shadow: 0 0 10px rgba(167,139,250,.8) !important;
+}
+
+/* ────────────────────────────────────────────────────────────────────
+   WOLVDEN — SELETORES REAIS DO SITE
+   (confirmados pela comunidade e guias oficiais)
+   
+   Estrutura do den:
+   body > #wrap > #content_wrap > .content  (conteúdo principal)
+                                > .sidebar  (barra lateral)
+   
+   Den page:
+   .den_wrap, .den_header, .den_name, .den_info
+   .den_wolves (lista de lobos)
+   .wolf_card / .wolf_entry (cada lobo)
+   .wolf_image (imagem do lobo — NÃO alteramos tamanho)
+   .wolf_name, .wolf_stats
+   .boxcontainer, .Box1, .Box2, .Box3 (caixas do HTML do den)
+   .hoverbox1, .hoverbox2, .hoverbox3
+──────────────────────────────────────────────────────────────────── */
+
+/* ── Wrap principal ─────────────────────────────────────────────── */
+#wrap, #content_wrap, #content, .content, .content_wrap {
+  background: transparent !important;
+}
+
+/* ── Sidebar ────────────────────────────────────────────────────── */
+.sidebar {
+  background: var(--card) !important;
+  border: 1px solid var(--b-sub) !important;
+  border-radius: var(--r2) !important;
+  box-shadow: var(--g-xs) !important;
+  color: var(--t1) !important;
+}
+.sidebar h1, .sidebar h2, .sidebar h3,
+.sidebar h4, .sidebar h5 {
+  font-family: var(--fd) !important;
+  color: var(--p300) !important;
+  font-size: .72rem !important;
+  letter-spacing: .18em !important;
+  text-transform: uppercase !important;
+  border-bottom: 1px solid var(--b-sub) !important;
+}
+.sidebar a {
+  color: var(--p300) !important;
+  transition: color var(--ease) !important;
+}
+.sidebar a:hover { color: var(--p100) !important; }
+
+/* ── Cabeçalho do den ───────────────────────────────────────────── */
+.den_wrap, .den-wrap {
+  background: transparent !important;
+}
+
+.den_header, .den-header, .pack_header, .pack-header {
+  position: relative;
+  background: linear-gradient(150deg, #090920 0%, #100d2a 42%, #1c0948 72%, #2a1068 100%) !important;
+  border: 2px solid var(--p600) !important;
+  border-radius: var(--r4) !important;
+  box-shadow: var(--g-lg) !important;
+  overflow: hidden;
+}
+/* Linha ornamental no topo do cabeçalho */
+.den_header::before, .den-header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--p700) 20%, var(--p400) 50%, var(--p700) 80%, transparent);
+  pointer-events: none;
+}
+
+.den_name, .den-name, .pack_name, .pack-name {
+  font-family: var(--fd) !important;
+  font-weight: 900 !important;
+  letter-spacing: .05em !important;
+  background: linear-gradient(130deg, var(--p100), var(--p300), var(--p400), var(--gold-lt), var(--p200)) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  /* ⚠️ Não alteramos font-size — mantém o que o site define */
+}
+
+.den_info, .den-info, .pack_info {
+  color: var(--t2) !important;
+  font-family: var(--fb) !important;
+}
+
+/* ── Descrição do den (onde fica o HTML customizado) ────────────── */
+.den_description, .den-description, .den_text, .den-text {
+  background: transparent !important;
+  color: var(--t1) !important;
+  font-family: var(--fb) !important;
+  line-height: 1.75 !important;
+}
+.den_description a, .den-description a { color: var(--p300) !important; }
+.den_description a:hover, .den-description a:hover { color: var(--p100) !important; }
+
+/* ── Lista de lobos ─────────────────────────────────────────────── */
+.den_wolves, .den-wolves, #den_wolves, .wolves_list, .wolf_list {
+  background: transparent !important;
+}
+
+/* ── Cada card de lobo ──────────────────────────────────────────── */
+/* ⚠️ Não alteramos width/height/padding que afetem o layout nativo */
+.wolf_card, .wolf-card, .wolf_entry, .wolf-entry,
+.wolf_row, .wolf-row, .wolf_item, .wolf-item {
+  background: var(--card) !important;
+  border: 1px solid var(--b-sub) !important;
+  border-radius: var(--r2) !important;
+  box-shadow: var(--g-xs) !important;
+  transition: border-color var(--ease), box-shadow var(--ease), background var(--ease) !important;
+}
+.wolf_card:hover, .wolf-card:hover,
+.wolf_entry:hover, .wolf-entry:hover {
+  border-color: var(--p600) !important;
+  background: var(--card-h) !important;
+  box-shadow: var(--g-sm) !important;
+}
+
+/* Nome do lobo */
+.wolf_name, .wolf-name, .wolf_card .name, .wolf_entry .name {
+  font-family: var(--fd) !important;
+  color: var(--p200) !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  transition: color var(--ease) !important;
+  /* ⚠️ Sem font-size — mantém o nativo */
+}
+.wolf_name:hover, .wolf-name:hover,
+a.wolf_name:hover, a.wolf-name:hover {
+  color: #fff !important;
+  text-shadow: 0 0 8px rgba(167,139,250,.6) !important;
+}
+
+/* Stats / info secundária do lobo */
+.wolf_stats, .wolf-stats, .wolf_info, .wolf-info,
+.wolf_card .stats, .wolf_entry .info {
+  color: var(--t2) !important;
+  /* ⚠️ Sem font-size — mantém o nativo */
+}
+
+/* Imagem do lobo — só borda e sombra, NADA de width/height/object-fit */
+.wolf_image, .wolf-image, .wolf_card img, .wolf_entry img,
+img.wolf_img {
+  border: 2px solid var(--b-sub) !important;
+  border-radius: var(--r1) !important;
+  box-shadow: var(--g-xs) !important;
+  transition: border-color var(--ease), box-shadow var(--ease) !important;
+  /* ⚠️ SEM width, height, object-fit — respeita o sprite nativo do Wolvden */
+}
+.wolf_image:hover, .wolf-image:hover,
+.wolf_card img:hover, .wolf_entry img:hover {
+  border-color: var(--p500) !important;
+  box-shadow: var(--g-sm) !important;
+}
+
+/* ── Tabelas dentro do den ──────────────────────────────────────── */
+table {
+  width: 100%;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+}
+
+thead tr, tr.header_row, tr.header-row {
+  background: linear-gradient(90deg, var(--p900), var(--p800)) !important;
+}
+th {
+  font-family: var(--fd) !important;
+  color: var(--p200) !important;
+  letter-spacing: .14em !important;
+  text-transform: uppercase !important;
+  border-bottom: 1px solid var(--b-glow) !important;
+  background: transparent !important;
+  /* ⚠️ Sem font-size — mantém o nativo */
+}
+tbody tr {
+  border-bottom: 1px solid var(--b-faint) !important;
+  transition: background var(--ease) !important;
+}
+tbody tr:hover { background: rgba(109,40,217,.07) !important; }
+td {
+  color: var(--t1) !important;
+  border: none !important;
+  vertical-align: middle !important;
+}
+
+/* ── Links globais ──────────────────────────────────────────────── */
+a {
+  color: var(--p300) !important;
+  text-decoration: none !important;
+  transition: color var(--ease) !important;
+}
+a:hover {
+  color: var(--p100) !important;
+  text-shadow: 0 0 8px rgba(167,139,250,.4) !important;
+}
+
+/* ── Botões ─────────────────────────────────────────────────────── */
+button, .btn, input[type="submit"], input[type="button"], .button {
+  background: linear-gradient(135deg, var(--p800), var(--p700)) !important;
+  color: var(--p100) !important;
+  border: 1px solid var(--p600) !important;
+  border-radius: var(--r1) !important;
+  font-family: var(--fd) !important;
+  letter-spacing: .08em !important;
+  cursor: pointer !important;
+  transition: all var(--ease) !important;
+  box-shadow: var(--g-xs) !important;
+  /* ⚠️ Sem padding/font-size — mantém o nativo */
+}
+button:hover, .btn:hover, input[type="submit"]:hover {
+  background: linear-gradient(135deg, var(--p700), var(--p600)) !important;
+  box-shadow: var(--g-md) !important;
+}
+button:active, .btn:active {
+  box-shadow: var(--g-xs) !important;
+}
+
+/* ── Inputs ─────────────────────────────────────────────────────── */
+input[type="text"], input[type="number"], input[type="email"],
+input[type="search"], input[type="password"], textarea, select {
+  background: var(--deep) !important;
+  color: var(--t1) !important;
+  border: 1px solid var(--b-mid) !important;
+  border-radius: var(--r1) !important;
+  font-family: var(--fb) !important;
+  transition: border-color var(--ease), box-shadow var(--ease) !important;
+}
+input:focus, textarea:focus, select:focus {
+  outline: none !important;
+  border-color: var(--p500) !important;
+  box-shadow: 0 0 0 3px rgba(124,58,237,.22) !important;
+}
+::placeholder { color: var(--t3) !important; }
+
+/* ── Alertas / mensagens do sistema ─────────────────────────────── */
+.alert, .flash, .notice, .message, .warning {
+  background: rgba(109,40,217,.10) !important;
+  border: 1px solid var(--b-sub) !important;
+  border-left: 4px solid var(--p500) !important;
+  border-radius: var(--r1) !important;
+  color: var(--t1) !important;
+}
+.alert_success, .alert-success { border-left-color: #34d399 !important; background: rgba(52,211,153,.06) !important; }
+.alert_warning, .alert-warning { border-left-color: var(--gold) !important; background: rgba(200,149,58,.06) !important; }
+.alert_danger,  .alert-danger  { border-left-color: #ef4444 !important; background: rgba(239,68,68,.06) !important; }
+
+/* ── Paginação ──────────────────────────────────────────────────── */
+.pagination a, .page_nav a, .pager a {
+  background: var(--mid) !important;
+  border: 1px solid var(--b-sub) !important;
+  border-radius: var(--r1) !important;
+  color: var(--t2) !important;
+  transition: all var(--ease) !important;
+}
+.pagination a:hover, .pagination a.active,
+.page_nav a:hover, .pager a:hover {
+  background: var(--p800) !important;
+  border-color: var(--p500) !important;
+  color: var(--p100) !important;
+  box-shadow: var(--g-xs) !important;
+}
+
+/* ── Footer ─────────────────────────────────────────────────────── */
+footer, #footer, .footer, .site_footer {
+  border-top: 1px solid var(--b-sub) !important;
+  color: var(--t3) !important;
+  font-family: var(--fd) !important;
+  letter-spacing: .08em !important;
+  background: transparent !important;
+}
+footer a, #footer a { color: var(--t3) !important; }
+footer a:hover     { color: var(--p300) !important; }
+
+/* ── Divisores ──────────────────────────────────────────────────── */
+hr {
+  border: none !important;
+  height: 1px !important;
+  background: linear-gradient(90deg, transparent, var(--b-glow), var(--p500), var(--b-glow), transparent) !important;
+}
+
+/* ────────────────────────────────────────────────────────────────────
+   CAIXAS DO HTML CUSTOMIZADO DO DEN
+   Seletores confirmados pelo pastebin oficial da comunidade:
+   .boxcontainer, .Box1, .Box2, .Box3
+   .hoverbox1, .hoverbox2, .hoverbox3
+──────────────────────────────────────────────────────────────────── */
+
+/* Container das caixas */
+.boxcontainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+}
+
+/* ── Box estático ───────────────────────────────────────────────── */
+.Box1, .Box2, .Box3 {
+  background: var(--card) !important;
+  border: 1px solid var(--b-sub) !important;
+  border-radius: var(--r2) !important;
+  box-shadow: var(--g-xs) !important;
+  color: var(--t1) !important;
+  font-family: var(--fb) !important;
+  /* ⚠️ Sem width fixa — respeita o que o CSS nativo define */
+  transition: border-color var(--ease), box-shadow var(--ease) !important;
+}
+.Box1:hover, .Box2:hover, .Box3:hover {
+  border-color: var(--b-mid) !important;
+  box-shadow: var(--g-sm) !important;
+}
+
+/* Tamanhos relativos, sem pisar no layout nativo */
+.Box1 { flex: 1 1 28%; min-width: 180px; }
+.Box2 { flex: 1 1 45%; min-width: 240px; }
+.Box3 { flex: 1 1 98%; }
+
+/* ── Box com hover expandido ────────────────────────────────────── */
+.hoverbox1, .hoverbox2, .hoverbox3 {
+  background: var(--mid) !important;
+  border: 1px solid var(--b-sub) !important;
+  border-radius: var(--r2) !important;
+  box-shadow: var(--g-xs) !important;
+  color: var(--t1) !important;
+  font-family: var(--fb) !important;
+  overflow: hidden;
+  transition: all var(--ease) !important;
+}
+.hoverbox1:hover, .hoverbox2:hover, .hoverbox3:hover {
+  border-color: var(--p600) !important;
+  background: var(--card) !important;
+  box-shadow: var(--g-md) !important;
+}
+
+.hoverbox1 { flex: 1 1 28%; min-width: 180px; }
+.hoverbox2 { flex: 1 1 45%; min-width: 240px; }
+.hoverbox3 { flex: 1 1 98%; }
+
+/* Títulos h2 dentro das caixas */
+.Box1 h2, .Box2 h2, .Box3 h2,
+.hoverbox1 h2, .hoverbox2 h2, .hoverbox3 h2 {
+  font-family: var(--fd) !important;
+  color: var(--p300) !important;
+  letter-spacing: .16em !important;
+  text-transform: uppercase !important;
+  border-bottom: 1px solid var(--b-sub) !important;
+  /* ⚠️ Sem font-size — mantém o nativo */
+}
+
+/* ────────────────────────────────────────────────────────────────────
+   CUSTOM HTML DO DEN (o HTML inline com inline styles)
+   Os inline styles têm alta especificidade, então só podemos
+   adicionar efeitos sem !important em alguns casos.
+   O que fazemos aqui: garantir que links e spans interativos
+   fiquem bonitos no hover.
+──────────────────────────────────────────────────────────────────── */
+.den_description span[style*="display:inline-block"],
+.den_description span[style*="border-radius"],
+.den-description span[style*="display:inline-block"] {
+  transition: transform .15s ease, box-shadow .15s ease !important;
+}
+.den_description span[style*="display:inline-block"]:hover,
+.den-description span[style*="display:inline-block"]:hover {
+  transform: translateY(-1px) !important;
+}
+
+/* ────────────────────────────────────────────────────────────────────
+   CABEÇALHOS GLOBAIS
+──────────────────────────────────────────────────────────────────── */
+h1, h2, h3, h4, h5 {
+  font-family: var(--fd) !important;
+  color: var(--p200) !important;
+  /* ⚠️ Sem font-size — mantém o nativo */
+}
+
+/* ────────────────────────────────────────────────────────────────────
+   ANIMAÇÃO SUAVE DE ENTRADA — apenas fade, sem alterar layout
+──────────────────────────────────────────────────────────────────── */
+@keyframes wolvdenFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.den_wrap, .den-wrap,
+.boxcontainer, .den_description, .den-description {
+  animation: wolvdenFadeIn .4s ease both;
+}
+
+/* Preferência de motion reduzido */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────────────
+   RESPONSIVIDADE — só layout das CAIXAS do HTML customizado
+   O resto (wolves, sidebar, etc) usa o layout responsivo nativo
+──────────────────────────────────────────────────────────────────── */
+
+/* Mobile (< 480px): caixas empilham */
+@media (max-width: 480px) {
+  .boxcontainer {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  .Box1, .Box2, .Box3,
+  .hoverbox1, .hoverbox2, .hoverbox3 {
+    flex: 1 1 100% !important;
+    min-width: unset !important;
+  }
+}
+
+/* Phablet (481px–640px): max 2 colunas */
+@media (min-width: 481px) and (max-width: 640px) {
+  .Box1, .hoverbox1 {
+    flex: 1 1 calc(50% - 6px) !important;
+    min-width: 140px !important;
+  }
+  .Box2, .hoverbox2 {
+    flex: 1 1 100% !important;
+  }
+}
+
+/* Tablet (641px–1023px): comportamento normal */
+@media (min-width: 641px) and (max-width: 1023px) {
+  .Box1, .hoverbox1 { flex: 1 1 calc(33% - 8px) !important; min-width: 160px !important; }
+  .Box2, .hoverbox2 { flex: 1 1 calc(48% - 8px) !important; min-width: 220px !important; }
+  .Box3, .hoverbox3 { flex: 1 1 100% !important; }
+}
+
+/* ────────────────────────────────────────────────────────────────────
+   MODO CLARO → mantém dark em todos os componentes
+──────────────────────────────────────────────────────────────────── */
+body.theme_default .sidebar,
+body.theme_default .wolf_card, body.theme_default .wolf-card,
+body.theme_default .wolf_entry, body.theme_default .wolf-entry,
+body.theme_default .Box1, body.theme_default .Box2, body.theme_default .Box3,
+body.theme_default .hoverbox1, body.theme_default .hoverbox2, body.theme_default .hoverbox3,
+body.theme_default .den_header, body.theme_default .den-header {
+  color: var(--t1) !important;
+}
+body.theme_default input, body.theme_default textarea, body.theme_default select {
+  background: var(--deep) !important;
+  color: var(--t1) !important;
+  border-color: var(--b-mid) !important;
+}
+body.theme_default a { color: var(--p300) !important; }
+
+/* ────────────────────────────────────────────────────────────────────
+   EXTRAS: elementos de interface do Wolvden confirmados pela comunidade
+──────────────────────────────────────────────────────────────────── */
+
+/* Barra de XP / progresso */
+.progress_bar, .progress-bar, .xp_bar, .xp-bar {
+  background: var(--mid) !important;
+  border: 1px solid var(--b-sub) !important;
+  border-radius: 40px !important;
+  overflow: hidden !important;
+}
+.progress_fill, .progress-fill, .xp_fill, .xp-fill {
+  background: linear-gradient(90deg, var(--p700), var(--p400)) !important;
+  border-radius: 40px !important;
+}
+
+/* Badges / tags genéricas */
+.badge, .tag, .label {
+  border-radius: 20px !important;
+  font-family: var(--fd) !important;
+  letter-spacing: .05em !important;
+}
+
+/* Tooltips */
+.tooltip, [role="tooltip"] {
+  background: var(--card) !important;
+  border: 1px solid var(--b-mid) !important;
+  border-radius: var(--r1) !important;
+  color: var(--t1) !important;
+  box-shadow: var(--g-sm) !important;
+  font-family: var(--fb) !important;
+}
+
+/* Abas / tabs */
+.tabs, .tab_list, .tab-list {
+  border-bottom: 1px solid var(--b-sub) !important;
+}
+.tab, .tab_item, .tab-item {
+  color: var(--t2) !important;
+  font-family: var(--fd) !important;
+  letter-spacing: .06em !important;
+  transition: color var(--ease), border-color var(--ease) !important;
+}
+.tab.active, .tab_item.active, .tab-item.active,
+.tab:hover, .tab_item:hover {
+  color: var(--p200) !important;
+  border-bottom: 2px solid var(--p500) !important;
+}
+
+/* Dropdown / select customizado */
+.dropdown, .select_wrap, .select-wrap {
+  background: var(--deep) !important;
+  border: 1px solid var(--b-mid) !important;
+  border-radius: var(--r1) !important;
+}
+.dropdown li, .dropdown_item, .dropdown-item {
+  color: var(--t1) !important;
+  transition: background var(--ease) !important;
+}
+.dropdown li:hover, .dropdown_item:hover, .dropdown-item:hover {
+  background: rgba(109,40,217,.15) !important;
+  color: var(--p100) !important;
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   FIM DO CSS
+   HOWLING EBONY · Wolf Lover · Den #12568
+   ⚠️ Tamanhos nativos de imagens e sprites do Wolvden preservados
+   Crédito: Wolf Lover · Uso pessoal · Não revender
+════════════════════════════════════════════════════════════════════ */
