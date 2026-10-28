@@ -139,7 +139,8 @@ a.logo, a#logo,
 .site-logo, #site-logo,
 img.logo, img#logo,
 .navbar-brand {
-  position: relative !important;
+  /* ⚠️ Sem position: no computador o logo do Wolvden é position:absolute;
+     forçar relative empurrava o menu e o logo cobria "DEN". Só o z-index. */
   z-index: 1010 !important;
   /* ⚠️ Sem width/height — mantém tamanho nativo */
 }
