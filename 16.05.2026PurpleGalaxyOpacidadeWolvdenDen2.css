@@ -763,6 +763,19 @@ body.theme_light .page-link {
 #fraDenHTML .tb { border: 1px solid rgba(109,40,217,.3); background: rgba(27,27,50,.9); color: #9d8ec0 !important; }
 
 /* ════════════════════════════════════════════════════════════════════
+   LOGO E IMAGENS DO TEXTO (correções 28/10/2026)
+   • O logo é mais alto que a barra de cima; a barra de status vinha por
+     cima dele (mesmo z-index). A barra principal fica acima.
+   • O Wolvden remove object-fit do HTML da den/perfil: as fotos com
+     altura fixa ficavam esticadas. Aqui elas recortam sem deformar.
+════════════════════════════════════════════════════════════════════ */
+.navbar.navbar-main { z-index: 1002 !important; }
+#fraDenHTML img, #fraProfileHTML img {
+  object-fit: cover !important;
+  object-position: center top !important;
+}
+
+/* ════════════════════════════════════════════════════════════════════
    FIM DO CSS
    HOWLING EBONY · Kuro Ryu · Den #12568 · Wolvden Cave BR 🐺🌑✨
    ⚠️ Tamanhos nativos de imagens, ícones e fontes do Wolvden preservados
