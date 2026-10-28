@@ -1,9 +1,11 @@
 /* ═══════════════════════════════════════════════════════════════════════
-   HOWLING EBONY — Den CSS · Wolf Lover · Den #12568
+   HOWLING EBONY — Den CSS · Kuro Ryu · Den #12568
    Tema: Dark Lunar Fantasy · Preto & Roxo Profundo
+   Atualizado: 28/10/2026 — funciona no tema claro e no escuro do Wolvden
    ⚠️ Não altera tamanhos de imagens, ícones, fontes ou layout nativo.
       Apenas: cores, fundos, bordas, sombras e decoração.
-   Crédito: Wolf Lover · Uso pessoal · Não revender
+   Crédito: Thayná Batista da Silva | Kuro Ryu ID#12568 · Wolvden Cave BR
+   Uso pessoal · Não revender
    ═══════════════════════════════════════════════════════════════════════ */
 
 /* ── VARIÁVEIS ──────────────────────────────────────────────────────── */
@@ -56,7 +58,9 @@
 ════════════════════════════════════════════════════════════════════ */
 body,
 body.theme_dark,
-body.theme_default {
+body.theme_default,
+body.theme_light,
+body[class*="theme_"] {
   background-color: #03030e !important;
   background-image:
     linear-gradient(180deg,
@@ -689,8 +693,65 @@ hr {
 }
 
 /* ════════════════════════════════════════════════════════════════════
+   TEMA CLARO E ESCURO — LEGIBILIDADE
+   No tema claro o Wolvden usa texto escuro (.text-dark, .text-muted…)
+   e menus/modais brancos. Como o fundo aqui é sempre a galáxia escura,
+   forçamos textos claros e painéis escuros nos dois temas.
+════════════════════════════════════════════════════════════════════ */
+body.theme_light, body.theme_default, body.theme_dark {
+  --bs-body-color: var(--t1);
+  --bs-body-bg: transparent;
+}
+.text-dark, .text-body, .text-black, .text-black-50,
+body.theme_light p, body.theme_light li, body.theme_light label,
+body.theme_light h1, body.theme_light h2, body.theme_light h3,
+body.theme_light h4, body.theme_light h5, body.theme_light h6,
+body.theme_light small, body.theme_light span:not([style*="color"]),
+body.theme_light .form-check-label, body.theme_light legend {
+  color: var(--t1) !important;
+}
+.text-muted, .text-secondary, .grey, .text-grey, .small.text-muted {
+  color: var(--t2) !important;
+}
+.text-primary { color: var(--p300) !important; }
+
+/* Menus suspensos, modais, popovers e listas (brancos no tema claro) */
+.dropdown-menu, .popover, .popover-body, .popover-header,
+.modal-content, .modal-header, .modal-body, .modal-footer,
+.list-group-item, .toast, .toast-header, .toast-body,
+.custom-select, .form-control, .input-group-text {
+  background-color: rgba(10, 7, 28, .96) !important;
+  color: var(--t1) !important;
+  border-color: var(--b-sub) !important;
+}
+.dropdown-item { color: var(--t1) !important; }
+.dropdown-item:hover, .dropdown-item:focus, .list-group-item-action:hover {
+  background: rgba(109,40,217,.35) !important;
+  color: #fff !important;
+}
+.dropdown-divider { border-top-color: var(--b-sub) !important; }
+.close, .btn-close { color: var(--t1) !important; filter: invert(1) grayscale(1); opacity: .8; }
+select option { background: #0a071c !important; color: var(--t1) !important; }
+
+/* Abas e itens de navegação do Bootstrap no tema claro */
+body.theme_light .nav-link { color: var(--p200) !important; }
+body.theme_light .page-link {
+  background: var(--glass-low) !important; color: var(--t2) !important;
+  border-color: var(--b-sub) !important;
+}
+
+/* Botões coloridos do Bootstrap (ex.: seletor de idioma do Group
+   Wolvden Cave BR) mantêm a cor própria em vez do roxo genérico */
+.btn-success { background: #1f9d55 !important; color: #fff !important; }
+.btn-primary { background: #2563eb !important; color: #fff !important; }
+.btn-danger  { background: #dc2626 !important; color: #fff !important; }
+.btn-warning { background: #d97706 !important; color: #fff !important; }
+.btn-info    { background: #0891b2 !important; color: #fff !important; }
+
+/* ════════════════════════════════════════════════════════════════════
    FIM DO CSS
-   HOWLING EBONY · Wolf Lover · Den #12568
+   HOWLING EBONY · Kuro Ryu · Den #12568 · Wolvden Cave BR 🐺🌑✨
    ⚠️ Tamanhos nativos de imagens, ícones e fontes do Wolvden preservados
-   Crédito: Wolf Lover · Uso pessoal · Não revender
+   Crédito: Thayná Batista da Silva | Kuro Ryu ID#12568
+   Uso pessoal · Não revender
 ════════════════════════════════════════════════════════════════════ */
