@@ -749,6 +749,19 @@ body.theme_light .page-link {
 .btn-info    { background: #0891b2 !important; color: #fff !important; }
 
 /* ════════════════════════════════════════════════════════════════════
+   ETIQUETAS DO TEXTO DA DEN (.ta / .tm / .tb)
+   O Wolvden remove <style> do HTML da den, mas mantém as classes;
+   por isso as etiquetas são estilizadas aqui.
+════════════════════════════════════════════════════════════════════ */
+#fraDenHTML .ta, #fraDenHTML .tm, #fraDenHTML .tb {
+  display: inline-block; font-size: .77rem; padding: 2px 7px;
+  border-radius: 8px; margin: 1px; font-style: normal;
+}
+#fraDenHTML .ta { border: 1px solid #7c3aed; background: rgba(124,58,237,.13); color: #c4b5fd !important; }
+#fraDenHTML .tm { border: 1px solid #a855f7; background: linear-gradient(135deg,rgba(109,40,217,.2),rgba(124,58,237,.1)); color: #ddd6fe !important; font-weight: 700; }
+#fraDenHTML .tb { border: 1px solid rgba(109,40,217,.3); background: rgba(27,27,50,.9); color: #9d8ec0 !important; }
+
+/* ════════════════════════════════════════════════════════════════════
    FIM DO CSS
    HOWLING EBONY · Kuro Ryu · Den #12568 · Wolvden Cave BR 🐺🌑✨
    ⚠️ Tamanhos nativos de imagens, ícones e fontes do Wolvden preservados
