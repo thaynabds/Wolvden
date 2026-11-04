@@ -1,0 +1,46 @@
+name: Atualizar card do stud
+
+# Lê a den pública de Kuro Ryu (#12568), descobre o macho reprodutor atual
+# e regenera cave_br/stud/ (card, página de redirecionamento e dados).
+on:
+  schedule:
+    - cron: '17 */3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: stud-card
+  cancel-in-progress: false
+
+jobs:
+  stud:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fontes e Pillow
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq fonts-noto-core fonts-noto-color-emoji python3-pil > /dev/null
+
+      - name: Gerar card
+        run: python3 tools/stud_card.py
+
+      - name: Publicar se mudou
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git add cave_br/stud
+          if git diff --cached --quiet -- cave_br/stud/stud.json cave_br/stud/index.html; then
+            echo "Stud não mudou."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Card do stud atualizado: $(python3 -c "import json;d=json.load(open('cave_br/stud/stud.json'));print(d['name'],d['id'])")"
+          git push
+          gh workflow run pages.yml --ref "${GITHUB_REF_NAME}"
